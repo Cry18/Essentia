@@ -2,9 +2,6 @@ package com.essentia.essentia_api.entity;
 
 import java.util.List;
 
-import com.example.unisa.entity.Brand;
-import com.example.unisa.entity.NasoProfumiere;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,5 +30,29 @@ public class Shelf {
 			inverseJoinColumns = @JoinColumn(name = "shelf")
 			)	
 	private List<Perfume> perfumes;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public List<Perfume> getPerfumes() {
+		return perfumes;
+	}
+	public void setPerfumes(List<Perfume> perfumes) {
+		this.perfumes = perfumes;
+	}
 	
 }

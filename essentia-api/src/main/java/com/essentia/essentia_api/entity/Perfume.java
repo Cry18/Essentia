@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -43,12 +44,7 @@ public class Perfume {
 				)
 		private List<Perfume_note> perfumeNotes;
 		
-		@ManyToMany
-		@JoinTable(
-				name = "reviews",
-				joinColumns = @JoinColumn (name = "perfume"),
-				inverseJoinColumns = @JoinColumn(name = "user")
-				)
+		@OneToMany(mappedBy = "perfume")
 		private List<Review> reviews;
 		
 		public Brand getBrand() {

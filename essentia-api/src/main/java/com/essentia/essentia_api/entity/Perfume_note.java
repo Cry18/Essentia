@@ -1,5 +1,6 @@
 package com.essentia.essentia_api.entity;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,13 +13,17 @@ public class Perfume_note {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int id;
-	String name;
-	String description;
-	private int type;
+	private int id;
+	private String name;
+	private String description;
+
+	public Perfume_note() {}
 	
-	
-	
+	public Perfume_note (String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
+
 	public int getId() {
 		return id;
 	}
