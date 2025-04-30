@@ -26,12 +26,6 @@ public class PerfumeNoteServiceImpl implements PerfumeNoteService{
 	  }
 
 	@Override
-	public PerfumeNote findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void create(PerfumeNoteDto prfNote) {
 		PerfumeNote prfNew = new PerfumeNote(
 				prfNote.getName(),
@@ -41,14 +35,25 @@ public class PerfumeNoteServiceImpl implements PerfumeNoteService{
 	}
 
 	@Override
-	public void updatePerfumeNote(int id, PerfumeNote b) {
-		// TODO Auto-generated method stub
-		
+	public void updatePerfumeNote(int id, PerfumeNoteDto note) {
+		PerfumeNote prfNote = perfumeNoteRepository.findById(id);	
+		// Aggiorna solo i campi forniti
+		if (note.getName() != null) {
+			prfNote.setName(note.getName());
+		}
+		if (note.getDescription() != null) {
+			prfNote.setDescription(note.getDescription());
+		}
+	
+		perfumeNoteRepository.save(prfNote);
 	}
 
 	@Override
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
+		PerfumeNote prfNote = perfumeNoteRepository.findById(id);
+		if (prfNote != null) {
+			perfumeNoteRepository.delete(prfNote);
+		}
 		
 	}
 

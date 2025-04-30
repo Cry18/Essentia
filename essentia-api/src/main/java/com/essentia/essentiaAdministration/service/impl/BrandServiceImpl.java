@@ -2,40 +2,58 @@ package com.essentia.essentiaAdministration.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.essentia.essentiaAdministration.dto.BrandDto;
 import com.essentia.essentiaAdministration.entity.Brand;
+import com.essentia.essentiaAdministration.repository.BrandRepository;
 import com.essentia.essentiaAdministration.service.BrandService;
 @Service
 public class BrandServiceImpl implements BrandService {
 
+		@Autowired
+	  private BrandRepository brandRepository;
+
 	@Override
-	public List<Brand> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BrandDto> findAll() {
+			List<Brand> brands = (List<Brand>) brandRepository.findAll();
+			List<BrandDto> brandsDto = brands.stream()
+				.map(brand -> new BrandDto(brand.getName(), brand.getDescription(), brand.getNazionality()))
+				.toList();
+			return brandsDto;
 	}
 
 	@Override
-	public Brand findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void create(BrandDto b) {
+		Brand brandNew = new Brand(
+				b.getName(),
+				b.getDescription(),
+				b.getNazionality());
+		  
+				brandRepository.save(brandNew); 
 	}
 
 	@Override
-	public void save(Brand b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateBrand(int id, Brand b) {
-		// TODO Auto-generated method stub
-		
+	public void updateBrand(int id, BrandDto b) {
+		Brand brand = brandRepository.findById(id);	
+		// Aggiorna solo i campi forniti
+		if (b.getName() != null) {
+			brand.setName(b.getName());
+		}
+		if (b.getDescription() != null) {
+			brand.setDescription(b.getDescription());
+		}
+	
+		brandRepository.save(brand);		
 	}
 
 	@Override
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
+		Brand brand = brandRepository.findById(id);
+		if (brand != null) {
+			brandRepository.delete(brand);
+		}
 		
 	}
 

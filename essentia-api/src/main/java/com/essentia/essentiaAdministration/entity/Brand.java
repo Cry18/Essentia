@@ -28,6 +28,15 @@ public class Brand {
 		return id;
 	}
 
+	public Brand() {
+	}
+
+	public Brand(String name, String description, String nazionality) {
+		this.name = name;
+		this.description = description;
+		this.nazionality = nazionality;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}

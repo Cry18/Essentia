@@ -20,6 +20,15 @@ public class Parfumer {
 	private String name;
 	private String description;
 	private String nazionality;
+
+	public Parfumer() {
+	}
+
+	public Parfumer(String name, String description, String nazionality) {
+		this.name = name;
+		this.description = description;
+		this.nazionality = nazionality;
+	}
 	
 	@ManyToMany(mappedBy = "parfumers")
 	private List<Perfume> perfumes;
