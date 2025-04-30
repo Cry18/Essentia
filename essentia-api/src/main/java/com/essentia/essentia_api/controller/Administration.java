@@ -1,5 +1,7 @@
 package com.essentia.essentia_api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.essentia.essentia_api.dto.Perfume_noteDto;
-import com.essentia.essentia_api.service.impl.Perfume_noteServiceImpl;
+import com.essentia.essentia_api.dto.PerfumeNoteDto;
+import com.essentia.essentia_api.service.impl.PerfumeNoteServiceImpl;
 
 import jakarta.validation.Valid;
 
@@ -19,18 +21,17 @@ import jakarta.validation.Valid;
 public class Administration {
 	
 	@Autowired
-	 private Perfume_noteServiceImpl perfume_noteService;
+	 private PerfumeNoteServiceImpl perfume_noteService;
 
 	
-	 @PostMapping("add/perfume-note")
-	    public void addPerfumeNote(@RequestBody @Valid Perfume_noteDto prfNote) {
+	 @PostMapping("add/perfume_note")
+	    public void addPerfumeNote(@RequestBody @Valid PerfumeNoteDto prfNote) {
 		 perfume_noteService.create(prfNote);
 	    }
 	 
+	 //TEST
 	 @GetMapping("all")
-	 public Perfume_noteDto allNotes() {
-		 //Lista di perfume_note
-		 perfume_noteService.findAll();
-		 return (Perfume_noteDto);
+	 public List<PerfumeNoteDto> allNotes() {
+		 return perfume_noteService.findAll();
 	    }
 }

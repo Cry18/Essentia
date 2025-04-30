@@ -42,7 +42,7 @@ public class Perfume {
 				joinColumns = @JoinColumn (name = "perfume"),
 				inverseJoinColumns = @JoinColumn(name = "note")
 				)
-		private List<Perfume_note> perfumeNotes;
+		private List<PerfumeNote> perfumeNotes;
 		
 		@OneToMany(mappedBy = "perfume")
 		private List<Review> reviews;

@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "perfumenotes")
-public class Perfume_note {
+public class PerfumeNote {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -17,9 +17,9 @@ public class Perfume_note {
 	private String name;
 	private String description;
 
-	public Perfume_note() {}
+	public PerfumeNote() {}
 	
-	public Perfume_note (String name, String description) {
+	public PerfumeNote (String name, String description) {
 		this.name = name;
 		this.description = description;
 	}

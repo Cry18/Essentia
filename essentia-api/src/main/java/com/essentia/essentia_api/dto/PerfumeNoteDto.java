@@ -3,7 +3,7 @@ package com.essentia.essentia_api.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class Perfume_noteDto {
+public class PerfumeNoteDto {
 
 	@NotBlank(message = "il nome deve contenere almeno un carattere diverso da spazio")
 	@Size(max = 30, message = "il nome della nota può contenere al massimo 30 caratteri")
@@ -12,9 +12,9 @@ public class Perfume_noteDto {
 	@Size(min = 10, message = "la descrizione deve contenere almeno 10 caratteri")
 	private String description;
 	
-	public Perfume_noteDto() {}
+	public PerfumeNoteDto() {}
 	
-	public Perfume_noteDto (String name, String description) {
+	public PerfumeNoteDto (String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
