@@ -8,11 +8,15 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
+	<!-- <groupId>com.essentia</groupId>
+	<artifactId>essentiaAdmin</artifactId>-->
+	
 	<groupId>com.essentia</groupId>
-	<artifactId>essentia-api</artifactId>
+	<artifactId>essentiaAdministration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>essentia-api</name>
-	<description>Essentia project for Spring Boot</description>
+	<name>essentiaAdministration</name>
+	<description>Essentia project for Spring Boot (Administrarion service)</description>
 	<url/>
 	<licenses>
 		<license/>

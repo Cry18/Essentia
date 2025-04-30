@@ -1,0 +1,56 @@
+package com.essentia.essentiaAdministration.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.essentia.essentiaAdministration.dto.PerfumeNoteDto;
+import com.essentia.essentiaAdministration.entity.PerfumeNote;
+import com.essentia.essentiaAdministration.repository.PerfumeNoteRepository;
+import com.essentia.essentiaAdministration.service.PerfumeNoteService;
+
+@Service
+public class PerfumeNoteServiceImpl implements PerfumeNoteService{
+	
+	@Autowired
+	  private PerfumeNoteRepository perfumeNoteRepository;
+
+	  @Override
+	  public List<PerfumeNoteDto> findAll() {
+		  List<PerfumeNote> notes = (List<PerfumeNote>) perfumeNoteRepository.findAll();
+		  List<PerfumeNoteDto> notesDto = notes.stream()
+			  .map(note -> new PerfumeNoteDto(note.getName(), note.getDescription()))
+			  .toList();
+		  return notesDto;
+	  }
+
+	@Override
+	public PerfumeNote findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void create(PerfumeNoteDto prfNote) {
+		PerfumeNote prfNew = new PerfumeNote(
+				prfNote.getName(),
+				prfNote.getDescription());
+		  
+		  perfumeNoteRepository.save(prfNew);
+	}
+
+	@Override
+	public void updatePerfumeNote(int id, PerfumeNote b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteById(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}
