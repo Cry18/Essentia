@@ -31,6 +31,6 @@ public class Administration {
 	 public Perfume_noteDto allNotes() {
 		 //Lista di perfume_note
 		 perfume_noteService.findAll();
-		 return (Perfume_noteDto) 
+		 return (Perfume_noteDto);
 	    }
 }

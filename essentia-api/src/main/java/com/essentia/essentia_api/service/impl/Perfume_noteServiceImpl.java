@@ -18,7 +18,9 @@ public class Perfume_noteServiceImpl implements Perfume_noteService{
 
 	@Override
 	public List<Perfume_note> findAll() {
-		return (List<Perfume_note>) perfume_noteRepository.findAll();
+		List <Perfume_note> notes = (List<Perfume_note>) perfume_noteRepository.findAll();
+		List<Perfume_noteDto> notesDto;
+		return ;
 	}
 
 	@Override
