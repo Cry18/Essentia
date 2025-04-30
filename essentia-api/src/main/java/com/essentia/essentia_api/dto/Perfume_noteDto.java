@@ -1,9 +1,6 @@
 package com.essentia.essentia_api.dto;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class Perfume_noteDto {
@@ -15,6 +12,12 @@ public class Perfume_noteDto {
 	@Size(min = 10, message = "la descrizione deve contenere almeno 10 caratteri")
 	private String description;
 	
+	public Perfume_noteDto() {}
+	
+	public Perfume_noteDto (String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
 	
 	public String getName() {
 		return name;

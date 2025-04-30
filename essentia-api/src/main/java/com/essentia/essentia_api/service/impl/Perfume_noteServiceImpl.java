@@ -16,12 +16,14 @@ public class Perfume_noteServiceImpl implements Perfume_noteService{
 	@Autowired
 	  private Perfume_noteRepository perfume_noteRepository;
 
-	@Override
-	public List<Perfume_note> findAll() {
-		List <Perfume_note> notes = (List<Perfume_note>) perfume_noteRepository.findAll();
-		List<Perfume_noteDto> notesDto;
-		return ;
-	}
+	  @Override
+	  public List<Perfume_noteDto> findAll() {
+		  List<Perfume_note> notes = (List<Perfume_note>) perfume_noteRepository.findAll();
+		  List<Perfume_noteDto> notesDto = notes.stream()
+			  .map(note -> new Perfume_noteDto(note.getName(), note.getDescription()))
+			  .toList();
+		  return notesDto;
+	  }
 
 	@Override
 	public Perfume_note findById(int id) {
