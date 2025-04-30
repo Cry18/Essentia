@@ -1,20 +1,24 @@
 package com.essentia.essentiaAdministration.dto;
 
+import java.util.List;
+
 public class PerfumeDto {
 
     private String name;
     private String brand;
     private String description;
-    private String notes; // JSON string of note IDs
+    private List<PerfumePrfNotesDto> notes;
+    private List<String> parfumers;
 
     public PerfumeDto() {
     }
 
-    public PerfumeDto(int id, String name, String brand, String description, String imageUrl, String notes) {
+    public PerfumeDto(String name, String brand, String description, List<PerfumePrfNotesDto> notes, List<String> parfumers) {
         this.name = name;
         this.brand = brand;
         this.description = description;
         this.notes = notes;
+        this.parfumers = parfumers;
     }
 
     public String getName() {
@@ -41,11 +45,19 @@ public class PerfumeDto {
         this.description = description;
     }
 
-    public String getNotes() {
+    public List<PerfumePrfNotesDto> getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) {
+    public void setNotes(List<PerfumePrfNotesDto> notes) {
         this.notes = notes;
+    }
+    
+    public List<String> getParfumers() {
+        return parfumers;
+    }
+
+    public void setParfumers(List<String> parfumers) {
+        this.parfumers = parfumers;
     }
 }

@@ -1,7 +1,7 @@
 package com.essentia.essentiaAdministration.entity;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,16 +36,43 @@ public class Perfume {
 				)
 		private List<Parfumer> parfumers;
 		
-		@ManyToMany
+		/*@ManyToMany
 		@JoinTable(
 				name = "perfume_prfnotes",
 				joinColumns = @JoinColumn (name = "perfume"),
 				inverseJoinColumns = @JoinColumn(name = "note")
-				)
-		private List<PerfumeNote> perfumeNotes;
+				)*/
+		@OneToMany(mappedBy = "perfume")
+		private List<PerfumePrfNotes> PerfumePrfNotes = new ArrayList<>();
+
 		
 		@OneToMany(mappedBy = "perfume")
-		private List<Review> reviews;
+		private List<Review> reviews = new ArrayList<>();
+
+	public Perfume() {
+	}
+
+	public Perfume(String name, String description, Brand brand, List<Parfumer> parfumers, List<PerfumePrfNotes> PerfumePrfNotes) {
+		this.name = name;
+		this.description = description;
+		this.brand = brand;
+		this.parfumers = parfumers;
+		this.PerfumePrfNotes = PerfumePrfNotes;
+	}
+
+	public void addReview(Review review) {
+		if (this.reviews != null) {
+			this.reviews.add(review);
+		}
+	}
+
+		public List<Review> getReviews() {
+			return reviews;
+		}
+
+		public void setReviews(List<Review> reviews) {
+			this.reviews = reviews;
+		}
 		
 		public Brand getBrand() {
 			return brand;
@@ -78,4 +105,11 @@ public class Perfume {
 			this.description = description;
 		}
 
+		public List<PerfumePrfNotes> getPerfumePrfNotes() {
+			return PerfumePrfNotes;
+		}
+
+		public void setPerfumePrfNotes(List<PerfumePrfNotes> PerfumePrfNotes) {
+			this.PerfumePrfNotes = PerfumePrfNotes;
+		}
 }
