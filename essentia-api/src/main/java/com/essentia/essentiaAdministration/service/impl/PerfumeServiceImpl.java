@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.essentia.essentiaAdministration.dto.PerfumeDto;
 import com.essentia.essentiaAdministration.entity.Brand;
 import com.essentia.essentiaAdministration.entity.Parfumer;
 import com.essentia.essentiaAdministration.entity.Perfume;
-import com.essentia.essentiaAdministration.entity.PerfumeNote;
 import com.essentia.essentiaAdministration.entity.PerfumePrfNotes;
 import com.essentia.essentiaAdministration.repository.BrandRepository;
 import com.essentia.essentiaAdministration.repository.ParfumerRepository;
 import com.essentia.essentiaAdministration.repository.PerfumeNoteRepository;
+import com.essentia.essentiaAdministration.repository.PerfumePrfNotesRepository;
 import com.essentia.essentiaAdministration.repository.PerfumeRepository;
 import com.essentia.essentiaAdministration.service.PerfumeService;
 
+import jakarta.transaction.Transactional;
+@Service
 public class PerfumeServiceImpl implements PerfumeService {
 
     @Autowired
@@ -31,6 +34,9 @@ public class PerfumeServiceImpl implements PerfumeService {
     @Autowired
     private PerfumeNoteRepository perfumeNoteRepository;
 
+    @Autowired
+    private PerfumePrfNotesRepository perfumePrfNoteRepository;
+
     @Override
     public List<PerfumeDto> findAll() {
 		  /*List<Perfume> perfumes = (List<Perfume>) perfumeRepository.findAll();
@@ -40,11 +46,13 @@ public class PerfumeServiceImpl implements PerfumeService {
 		  return perfumesDto;*/
         return null;
     }
+  
 
     @Override
+    @Transactional
     public void create(PerfumeDto perfume) {
         Brand brand = brandRepository.findByName(perfume.getBrand());
-        Perfume perfume2 = perfumeRepository.findByName(perfume.getName());
+        //Perfume perfume2 = perfumeRepository.findByName(perfume.getName());
 
         //crea una lista di profumieri
         List<Parfumer> parfumers = new ArrayList<>();
@@ -56,28 +64,27 @@ public class PerfumeServiceImpl implements PerfumeService {
                 parfumers.add(parfumer);
             }
         }
-        List<PerfumePrfNotes> perfumeNotes = new ArrayList<>();
-        //popola la lista a partire dalla lista di note del dto
-        for (int i = 0; i < perfume.getNotes().size(); i++) {
-            PerfumeNote note = perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName());;
-            PerfumePrfNotes perfumeNote = new PerfumePrfNotes(perfume2, note, perfume.getNotes().get(i).getType());
-            
-            if(perfumeNote != null) {
-                perfumeNotes.add(perfumeNote);
-            }
-
-        }
 
         Perfume newPerfume = new Perfume(
                 perfume.getName(),
                 perfume.getDescription(),
                 brand,
-                parfumers,
-                perfumeNotes
+                parfumers
         );
 
         perfumeRepository.save(newPerfume);
-    }
+
+        //popola la tabella ponte PerfumePrfNotes
+        for (int i = 0; i < perfume.getNotes().size(); i++) {
+            PerfumePrfNotes perfumeNote = new PerfumePrfNotes(
+                    newPerfume,
+                    perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName()),
+                    perfume.getNotes().get(i).getType()
+            );
+            perfumePrfNoteRepository.save(perfumeNote);
+            }
+        }
+    
 
     @Override
     public void updatePerfume(int id, PerfumeDto perfume) {

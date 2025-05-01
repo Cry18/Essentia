@@ -44,7 +44,7 @@ public class BrandController {
     }
 	 
 	//TEST
-	@GetMapping("all")
+	@GetMapping("all/brands")
 	 public List<BrandDto> allBrands() {
 		 return brandService.findAll();
 	    }

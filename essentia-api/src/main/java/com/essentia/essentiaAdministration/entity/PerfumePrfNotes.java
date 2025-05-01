@@ -1,6 +1,9 @@
 package com.essentia.essentiaAdministration.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -8,6 +11,9 @@ import jakarta.persistence.Table;
 @Table(name = "perfume_prfnotes")
 public class PerfumePrfNotes {
     
+    @Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	@ManyToOne
 	@JoinColumn(name = "perfume")
     private Perfume perfume;
@@ -22,6 +28,13 @@ public class PerfumePrfNotes {
         this.perfume = perfume;
         this.note = note;
         this.type = type;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     public Perfume getPerfume() {
         return perfume;

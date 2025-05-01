@@ -52,12 +52,11 @@ public class Perfume {
 	public Perfume() {
 	}
 
-	public Perfume(String name, String description, Brand brand, List<Parfumer> parfumers, List<PerfumePrfNotes> PerfumePrfNotes) {
+	public Perfume(String name, String description, Brand brand, List<Parfumer> parfumers) {
 		this.name = name;
 		this.description = description;
 		this.brand = brand;
 		this.parfumers = parfumers;
-		this.PerfumePrfNotes = PerfumePrfNotes;
 	}
 
 	public void addReview(Review review) {

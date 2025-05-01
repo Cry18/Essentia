@@ -43,7 +43,7 @@ public class PerfumeNoteController {
 		}
 	 
 	//TEST
-	@GetMapping("all")
+	@GetMapping("all/notes")
 		public List<PerfumeNoteDto> allNotes() {
 		 return perfumeNoteService.findAll();
 	    }
