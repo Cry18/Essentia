@@ -3,6 +3,7 @@ package com.essentia.essentiaAdministration.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,7 +43,7 @@ public class Perfume {
 				joinColumns = @JoinColumn (name = "perfume"),
 				inverseJoinColumns = @JoinColumn(name = "note")
 				)*/
-		@OneToMany(mappedBy = "perfume")
+		@OneToMany(mappedBy = "perfume", cascade= CascadeType.ALL)
 		private List<PerfumePrfNotes> PerfumePrfNotes = new ArrayList<>();
 
 		
@@ -79,10 +80,10 @@ public class Perfume {
 		public void setBrand(Brand brand) {
 			this.brand = brand;
 		}
-		public List<Parfumer> getNasi() {
+		public List<Parfumer> getParfumers() {
 			return parfumers;
 		}
-		public void setNasi(List<Parfumer> nasi) {
+		public void setParfumers(List<Parfumer> nasi) {
 			this.parfumers = nasi;
 		}
 		public int getId() {

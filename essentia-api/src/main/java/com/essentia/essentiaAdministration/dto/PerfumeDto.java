@@ -2,12 +2,23 @@ package com.essentia.essentiaAdministration.dto;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class PerfumeDto {
 
+    @NotBlank(message = "il nome deve contenere almeno un carattere diverso da spazio")
+    @Size(max = 30, message = "il nome del profumo può contenere al massimo 30 caratteri")  
     private String name;
+    @NotBlank(message = "il brand deve contenere almeno un carattere diverso da spazio")
+    @Size(max = 30, message = "il brand del profumo può contenere al massimo 30 caratteri")
     private String brand;
+    @NotBlank(message = "la descrizione del profumo deve contenere almeno un carattere diverso da spazio")
+    @Size(min = 10, message = "la descrizione deve contenere almeno 10 caratteri")
     private String description;
+    //add custom validation for notes
     private List<PerfumePrfNotesDto> notes;
+    //add custom validation for parfumers
     private List<String> parfumers;
 
     public PerfumeDto() {

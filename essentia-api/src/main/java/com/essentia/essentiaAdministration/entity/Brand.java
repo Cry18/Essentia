@@ -3,6 +3,7 @@ package com.essentia.essentiaAdministration.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Brand {
 	private String description;
 	private String nazionality;
 	
-	@OneToMany(mappedBy = "brand")
+	@OneToMany(mappedBy = "brand",cascade = CascadeType.ALL)
 	private List<Perfume> perfumes = new ArrayList<>();
 	public int getId() {
 		return id;

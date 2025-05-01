@@ -10,6 +10,7 @@ import com.essentia.essentiaAdministration.dto.PerfumeDto;
 import com.essentia.essentiaAdministration.entity.Brand;
 import com.essentia.essentiaAdministration.entity.Parfumer;
 import com.essentia.essentiaAdministration.entity.Perfume;
+import com.essentia.essentiaAdministration.entity.PerfumeNote;
 import com.essentia.essentiaAdministration.entity.PerfumePrfNotes;
 import com.essentia.essentiaAdministration.repository.BrandRepository;
 import com.essentia.essentiaAdministration.repository.ParfumerRepository;
@@ -52,7 +53,9 @@ public class PerfumeServiceImpl implements PerfumeService {
     @Transactional
     public void create(PerfumeDto perfume) {
         Brand brand = brandRepository.findByName(perfume.getBrand());
-        //Perfume perfume2 = perfumeRepository.findByName(perfume.getName());
+        if (brand == null){
+            throw new RuntimeException("Brand not found: " + perfume.getBrand());
+        }
 
         //crea una lista di profumieri
         List<Parfumer> parfumers = new ArrayList<>();
@@ -62,6 +65,8 @@ public class PerfumeServiceImpl implements PerfumeService {
             Parfumer parfumer = parfumerRepository.findByName(parfumerName);
             if (parfumer != null) {
                 parfumers.add(parfumer);
+            } else {
+                throw new RuntimeException("Parfumer not found: " + parfumerName);
             }
         }
 
@@ -76,9 +81,13 @@ public class PerfumeServiceImpl implements PerfumeService {
 
         //popola la tabella ponte PerfumePrfNotes
         for (int i = 0; i < perfume.getNotes().size(); i++) {
+            PerfumeNote Note = perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName());
+            if (Note == null) {
+                throw new RuntimeException("Note not found: " + perfume.getNotes().get(i).getName());
+            }
             PerfumePrfNotes perfumeNote = new PerfumePrfNotes(
                     newPerfume,
-                    perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName()),
+                    Note,
                     perfume.getNotes().get(i).getType()
             );
             perfumePrfNoteRepository.save(perfumeNote);
@@ -88,6 +97,28 @@ public class PerfumeServiceImpl implements PerfumeService {
 
     @Override
     public void updatePerfume(int id, PerfumeDto perfume) {
+        Perfume perfumeUpdated = perfumeRepository.findById(id);
+        if (perfumeUpdated != null) {
+            perfumeUpdated.setName(perfume.getName());
+            perfumeUpdated.setDescription(perfume.getDescription());
+
+            // Update the brand
+            Brand brand = brandRepository.findByName(perfume.getBrand());
+            perfumeUpdated.setBrand(brand);
+
+            // Update the parfumers
+            List<Parfumer> parfumers = new ArrayList<>();
+            for (String parfumerName : perfume.getParfumers()) {
+                Parfumer parfumer = parfumerRepository.findByName(parfumerName);
+                if (parfumer != null) {
+                    parfumers.add(parfumer);
+                }
+            }
+            perfumeUpdated.setParfumers(parfumers);
+
+            // Save the updated perfume
+            perfumeRepository.save(perfumeUpdated);
+        }
     }
 
     @Override
