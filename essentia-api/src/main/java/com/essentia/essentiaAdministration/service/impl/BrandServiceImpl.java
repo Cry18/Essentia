@@ -16,15 +16,6 @@ public class BrandServiceImpl implements BrandService {
 	  private BrandRepository brandRepository;
 
 	@Override
-	public List<BrandDto> findAll() {
-			List<Brand> brands = (List<Brand>) brandRepository.findAll();
-			List<BrandDto> brandsDto = brands.stream()
-				.map(brand -> new BrandDto(brand.getName(), brand.getDescription(), brand.getNazionality()))
-				.toList();
-			return brandsDto;
-	}
-
-	@Override
 	public void create(BrandDto b) {
 		Brand brandNew = new Brand(
 				b.getName(),

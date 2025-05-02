@@ -1,7 +1,5 @@
 package com.essentia.essentiaAdministration.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +12,7 @@ public class ParfumerServiceImpl implements ParfumerService {
     
     @Autowired
     private ParfumerRepository parfumerRepository;
-    
-    @Override
-    public List<ParfumerDto> findAll() {
-        List<Parfumer> parfumer = (List<Parfumer>) parfumerRepository.findAll();
-        List<ParfumerDto> parfumerDto = parfumer.stream()
-                .map(p -> new ParfumerDto(p.getName(), p.getDescription(), p.getNazionality()))
-                .toList();
-        return parfumerDto;
-    }
+
 
     @Override  
     public void create(ParfumerDto p) {

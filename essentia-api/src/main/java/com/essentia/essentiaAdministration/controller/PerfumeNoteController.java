@@ -1,11 +1,8 @@
 package com.essentia.essentiaAdministration.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,26 +24,20 @@ public class PerfumeNoteController {
 	 private PerfumeNoteServiceImpl perfumeNoteService;
 
 	//Create
-	@PostMapping("add/perfumeNote")
+	@PostMapping("add/perfumenote")
 	    public void addPerfumeNote(@RequestBody @Valid PerfumeNoteDto prfNote) {
 			perfumeNoteService.create(prfNote);
 	    }
 	
 	//Update
-	@PutMapping("edit/perfume-note/{id}")
+	@PutMapping("edit/perfumenote/{id}")
 		public void editPerfumeNote(@PathVariable int id, @RequestBody @Valid PerfumeNoteDto prfNote) {
 			perfumeNoteService.updatePerfumeNote(id, prfNote);
 	    }
 	
 	//Delete
-	@DeleteMapping("delete/perfume-note/{id}")
+	@DeleteMapping("delete/perfumenote/{id}")
 		public void deletePerfumeNote(@PathVariable int id) {
 			perfumeNoteService.deleteById(id);
 		}
-	 
-	//TEST
-	@GetMapping("all/notes")
-		public List<PerfumeNoteDto> allNotes() {
-		 return perfumeNoteService.findAll();
-	    }
 }

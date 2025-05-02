@@ -47,7 +47,7 @@ public class Perfume {
 		private List<PerfumePrfNotes> PerfumePrfNotes = new ArrayList<>();
 
 		
-		@OneToMany(mappedBy = "perfume")
+		@OneToMany(mappedBy = "perfume", cascade= CascadeType.ALL)
 		private List<Review> reviews = new ArrayList<>();
 
 	public Perfume() {

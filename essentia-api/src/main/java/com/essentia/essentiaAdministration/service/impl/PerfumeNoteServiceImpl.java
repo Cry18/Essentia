@@ -16,14 +16,6 @@ public class PerfumeNoteServiceImpl implements PerfumeNoteService{
 	@Autowired
 	  private PerfumeNoteRepository perfumeNoteRepository;
 
-	  @Override
-	  public List<PerfumeNoteDto> findAll() {
-		  List<PerfumeNote> notes = (List<PerfumeNote>) perfumeNoteRepository.findAll();
-		  List<PerfumeNoteDto> notesDto = notes.stream()
-			  .map(note -> new PerfumeNoteDto(note.getName(), note.getDescription()))
-			  .toList();
-		  return notesDto;
-	  }
 
 	@Override
 	public void create(PerfumeNoteDto prfNote) {

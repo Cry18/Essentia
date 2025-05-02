@@ -2,7 +2,9 @@ package com.essentia.essentiaAdministration.dto;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class PerfumeDto {
@@ -16,10 +18,14 @@ public class PerfumeDto {
     @NotBlank(message = "la descrizione del profumo deve contenere almeno un carattere diverso da spazio")
     @Size(min = 10, message = "la descrizione deve contenere almeno 10 caratteri")
     private String description;
-    //add custom validation for notes
+
+    @NotEmpty(message = "la lista delle note non può essere vuota")
+    @Valid
     private List<PerfumePrfNotesDto> notes;
-    //add custom validation for parfumers
-    private List<String> parfumers;
+    
+    @NotEmpty(message = "la lista dei profumieri non può essere vuota")
+    //validazione del singolo profumiere
+    private List<@NotBlank(message = "Il nome del profumiere non può essere vuoto") String> parfumers;
 
     public PerfumeDto() {
     }

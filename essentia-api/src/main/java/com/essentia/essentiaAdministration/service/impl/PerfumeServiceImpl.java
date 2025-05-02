@@ -37,16 +37,6 @@ public class PerfumeServiceImpl implements PerfumeService {
 
     @Autowired
     private PerfumePrfNotesRepository perfumePrfNoteRepository;
-
-    @Override
-    public List<PerfumeDto> findAll() {
-		  /*List<Perfume> perfumes = (List<Perfume>) perfumeRepository.findAll();
-		  List<PerfumeDto> perfumesDto = perfumes.stream()
-			  .map(perfume -> new PerfumeDto(perfume.getName(), perfume.getDescription()))
-			  .toList();
-		  return perfumesDto;*/
-        return null;
-    }
   
 
     @Override
@@ -104,15 +94,19 @@ public class PerfumeServiceImpl implements PerfumeService {
 
             // Update the brand
             Brand brand = brandRepository.findByName(perfume.getBrand());
+            if (brand == null) {
+                throw new RuntimeException("Brand not found: " + perfume.getBrand());
+            }
             perfumeUpdated.setBrand(brand);
 
             // Update the parfumers
             List<Parfumer> parfumers = new ArrayList<>();
             for (String parfumerName : perfume.getParfumers()) {
                 Parfumer parfumer = parfumerRepository.findByName(parfumerName);
-                if (parfumer != null) {
-                    parfumers.add(parfumer);
+                if (parfumer == null) {
+                    throw new RuntimeException("Parfumer not found: " + parfumerName);
                 }
+                    parfumers.add(parfumer);
             }
             perfumeUpdated.setParfumers(parfumers);
 
