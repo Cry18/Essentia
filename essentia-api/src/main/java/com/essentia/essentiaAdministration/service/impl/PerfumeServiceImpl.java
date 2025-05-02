@@ -12,6 +12,7 @@ import com.essentia.essentiaAdministration.entity.Parfumer;
 import com.essentia.essentiaAdministration.entity.Perfume;
 import com.essentia.essentiaAdministration.entity.PerfumeNote;
 import com.essentia.essentiaAdministration.entity.PerfumePrfNotes;
+import com.essentia.essentiaAdministration.exception.ResourceNotFoundException;
 import com.essentia.essentiaAdministration.repository.BrandRepository;
 import com.essentia.essentiaAdministration.repository.ParfumerRepository;
 import com.essentia.essentiaAdministration.repository.PerfumeNoteRepository;
@@ -44,7 +45,7 @@ public class PerfumeServiceImpl implements PerfumeService {
     public void create(PerfumeDto perfume) {
         Brand brand = brandRepository.findByName(perfume.getBrand());
         if (brand == null){
-            throw new RuntimeException("Brand not found: " + perfume.getBrand());
+            throw new ResourceNotFoundException("Brand not found: " + perfume.getBrand());
         }
 
         //crea una lista di profumieri
@@ -56,7 +57,7 @@ public class PerfumeServiceImpl implements PerfumeService {
             if (parfumer != null) {
                 parfumers.add(parfumer);
             } else {
-                throw new RuntimeException("Parfumer not found: " + parfumerName);
+                throw new ResourceNotFoundException("Parfumer not found: " + parfumerName);
             }
         }
 
@@ -73,7 +74,7 @@ public class PerfumeServiceImpl implements PerfumeService {
         for (int i = 0; i < perfume.getNotes().size(); i++) {
             PerfumeNote Note = perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName());
             if (Note == null) {
-                throw new RuntimeException("Note not found: " + perfume.getNotes().get(i).getName());
+                throw new ResourceNotFoundException("Note not found: " + perfume.getNotes().get(i).getName());
             }
             PerfumePrfNotes perfumeNote = new PerfumePrfNotes(
                     newPerfume,
@@ -95,7 +96,7 @@ public class PerfumeServiceImpl implements PerfumeService {
             // Update the brand
             Brand brand = brandRepository.findByName(perfume.getBrand());
             if (brand == null) {
-                throw new RuntimeException("Brand not found: " + perfume.getBrand());
+                throw new ResourceNotFoundException("Brand not found: " + perfume.getBrand());
             }
             perfumeUpdated.setBrand(brand);
 
@@ -104,7 +105,7 @@ public class PerfumeServiceImpl implements PerfumeService {
             for (String parfumerName : perfume.getParfumers()) {
                 Parfumer parfumer = parfumerRepository.findByName(parfumerName);
                 if (parfumer == null) {
-                    throw new RuntimeException("Parfumer not found: " + parfumerName);
+                    throw new ResourceNotFoundException("Parfumer not found: " + parfumerName);
                 }
                     parfumers.add(parfumer);
             }
