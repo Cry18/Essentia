@@ -16,6 +16,6 @@ public interface PerfumeNoteRepository extends CrudRepository<PerfumeNote, Integ
     @Override
     List<PerfumeNote> findAll();
 
-	@Query("SELECT p.name FROM PerfumeNote p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
-    List<String> findLikeName(@Param("name") String name);
+	@Query("SELECT p FROM PerfumeNote p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
+    List<PerfumeNote> findLikeName(@Param("name") String name);
 }

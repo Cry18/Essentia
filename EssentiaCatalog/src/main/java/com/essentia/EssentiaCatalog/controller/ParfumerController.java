@@ -21,9 +21,9 @@ public class ParfumerController {
 	 private ParfumerServiceImpl parfumerService;
 
     @GetMapping("parfumers/")
-    public List<String> findByName(@RequestParam(value = "name", required = false) String name) {
+    public List<ParfumerDto> findByName(@RequestParam(value = "name", required = false) String name) {
        if (name == null || name.isBlank()) return parfumerService.findAllParfumers();
-        List<String> parfumers = parfumerService.findLikeNameParfumers(name);
+        List<ParfumerDto> parfumers = parfumerService.findLikeNameParfumers(name);
         if (parfumers.isEmpty()) {
             throw new ResourceNotFoundException("No parfumers found with the name: " + name);
         }

@@ -6,6 +6,6 @@ import com.essentia.EssentiaCatalog.dto.BrandDto;
 
 public interface BrandService {
     BrandDto details(int id);
-    List<String> findAllBrands();
-    List<String> findLikeNameBrands(String name);
+    List<BrandDto> findAllBrands();
+    List<BrandDto> findLikeNameBrands(String name);
 }

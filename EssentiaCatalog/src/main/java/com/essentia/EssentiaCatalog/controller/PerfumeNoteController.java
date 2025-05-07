@@ -19,17 +19,17 @@ public class PerfumeNoteController {
     @Autowired
 	 private PerfumeNoteServiceImpl perfumeNoteService;
 
-    @GetMapping("perfume-notes/")
-    public List<String> findByName(@RequestParam(value = "name", required = false) String name) {
+    @GetMapping("perfumenotes/")
+    public List<PerfumeNoteDto> findByName(@RequestParam(value = "name", required = false) String name) {
        if (name == null || name.isBlank()) return perfumeNoteService.findAllPerfumeNotes();
-        List<String> perfumeNotes = perfumeNoteService.findLikeNamePerfumeNotes(name);
+        List<PerfumeNoteDto> perfumeNotes = perfumeNoteService.findLikeNamePerfumeNotes(name);
         if (perfumeNotes.isEmpty()) {
             throw new ResourceNotFoundException("No perfume notes found with the name: " + name);
         }
        return perfumeNotes;
    }
    
-   @GetMapping("perfume-note/{id}")
+   @GetMapping("perfumenote/{id}")
    public PerfumeNoteDto perfumeNoteDetails(@PathVariable int id) {
       return perfumeNoteService.details(id);
 }

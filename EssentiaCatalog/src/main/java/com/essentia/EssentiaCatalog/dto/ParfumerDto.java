@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Size;
 
 public class ParfumerDto {
         
+        private int id;
         @NotBlank(message = "il nome deve contenere almeno un carattere diverso da spazio")
         @Size(max = 30, message = "il nome del profumiere può contenere al massimo 30 caratteri")  
         private String name;
@@ -22,7 +23,13 @@ public class ParfumerDto {
             this.description = description;
             this.nazionality = nazionality;
         }
-        
+                
+        public int getId() {
+            return id;
+        }
+        public void setId(int id) {
+            this.id = id;
+        }
         public String getName() {
             return name;
         }

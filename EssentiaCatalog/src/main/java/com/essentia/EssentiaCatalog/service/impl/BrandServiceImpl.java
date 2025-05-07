@@ -24,23 +24,33 @@ public class BrandServiceImpl implements BrandService {
             throw new ResourceNotFoundException("Brand not found with id: " + id);
         }
         BrandDto brandDto = new BrandDto(brand.getName(), brand.getDescription(), brand.getNazionality());
+        brandDto.setId(brand.getId());
         return brandDto;
     }
 
     @Override
-    public List<String> findAllBrands() {
+    public List<BrandDto> findAllBrands() {
         
         List<Brand> brands = brandRepository.findAll();
-        List<String> brandNames = new ArrayList<>();
+        List<BrandDto> brandDtos = new ArrayList<>();
         for (Brand brand : brands) {
-            brandNames.add(brand.getName());
+            BrandDto b = new BrandDto(brand.getName(),null,null);
+            b.setId(brand.getId());
+            brandDtos.add(b);
         }
-        return brandNames;
+        return brandDtos;
     }
 
     @Override
-    public List<String> findLikeNameBrands(String name) {
-        List<String> brandNames = brandRepository.findLikeName(name);
-        return brandNames;
+    public List<BrandDto> findLikeNameBrands(String name) {
+        List<Brand> brands = brandRepository.findLikeName(name);
+        List<BrandDto> brandDtos = new ArrayList<>();
+        for (Brand brand : brands) {
+            BrandDto b = new BrandDto(brand.getName(),null,null);
+            b.setId(brand.getId());
+            brandDtos.add(b);
+        }
+        return brandDtos;
+
     }
 }

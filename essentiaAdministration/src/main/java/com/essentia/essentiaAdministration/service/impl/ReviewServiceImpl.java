@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.essentia.essentiaAdministration.entity.Review;
+import com.essentia.essentiaAdministration.exception.ResourceNotFoundException;
 import com.essentia.essentiaAdministration.repository.ReviewRepository;
 import com.essentia.essentiaAdministration.service.ReviewService;
 
@@ -20,6 +21,6 @@ public class ReviewServiceImpl implements ReviewService {
         Review review = reviewRepository.findById(id);
         if (review != null) {
             reviewRepository.delete(review);
-        }
+        } else throw new ResourceNotFoundException("Review not found with id: " + id);
 }
 }

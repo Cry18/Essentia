@@ -13,7 +13,7 @@ public interface PerfumeRepository extends CrudRepository<Perfume, Integer> {
     @Override
     List<Perfume> findAll();
 
-    @Query("SELECT DISTINCT p.name FROM Perfume p " +
+    @Query("SELECT DISTINCT p FROM Perfume p " +
     "LEFT JOIN p.brand b " +
     "LEFT JOIN p.parfumers par " +
     "LEFT JOIN PerfumePrfNotes ppn ON p.id = ppn.perfume.id " +
@@ -22,7 +22,7 @@ public interface PerfumeRepository extends CrudRepository<Perfume, Integer> {
     "AND (:brand IS NULL OR LOWER(b.name) LIKE LOWER(CONCAT('%', :brand, '%'))) " +
     "AND (:parfumer IS NULL OR LOWER(par.name) LIKE LOWER(CONCAT('%', :parfumer, '%'))) " +
     "AND (:note IS NULL OR LOWER(n.name) LIKE LOWER(CONCAT('%', :note, '%')))")
-List<String> findByFilters(@Param("name") String name,
+List<Perfume> findByFilters(@Param("name") String name,
                         @Param("parfumer") String parfumer,
                         @Param("brand") String brand,
                         @Param("note") String note);

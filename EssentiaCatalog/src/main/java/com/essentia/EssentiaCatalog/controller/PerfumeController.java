@@ -21,7 +21,7 @@ public class PerfumeController {
 	 private PerfumeServiceImpl perfumeService;
 
      @GetMapping("perfumes")
-     public List<String> findByFilters( 
+     public List<PerfumeDto> findByFilters( 
              @RequestParam(value = "name", required = false) String name,
              @RequestParam(value = "parfumer", required = false) String parfumer,
              @RequestParam(value = "brand", required = false) String brand,
@@ -34,12 +34,12 @@ public class PerfumeController {
              return perfumeService.findAllPerfumes();
          }
      
-         List<String> perfumes = perfumeService.findPerfumesByFilters(name, parfumer, brand, note);
+         List<PerfumeDto> perfumes = perfumeService.findPerfumesByFilters(name, parfumer, brand, note);
          if (perfumes.isEmpty()) {
              throw new ResourceNotFoundException("No perfumes found with the given filters.");
          }
          return perfumes;
-     }
+     } 
    
    @GetMapping("perfume/{id}")
    public PerfumeDto perfumeDetails(@PathVariable int id) {

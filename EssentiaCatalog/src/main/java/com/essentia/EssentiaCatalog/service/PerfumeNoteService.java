@@ -6,6 +6,6 @@ import com.essentia.EssentiaCatalog.dto.PerfumeNoteDto;
 
 public interface PerfumeNoteService {
     PerfumeNoteDto details(int id);
-    List<String> findAllPerfumeNotes();
-    List<String> findLikeNamePerfumeNotes(String name);
+    List<PerfumeNoteDto> findAllPerfumeNotes();
+    List<PerfumeNoteDto> findLikeNamePerfumeNotes(String name);
 }

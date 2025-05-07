@@ -30,6 +30,14 @@ public class Shelf {
 			inverseJoinColumns = @JoinColumn(name = "shelf")
 			)	
 	private List<Perfume> perfumes;
+
+	public Shelf(){};
+
+	public Shelf(String name, User user){
+		this.name = name;
+		this.user = user;
+	}
+
 	public int getId() {
 		return id;
 	}

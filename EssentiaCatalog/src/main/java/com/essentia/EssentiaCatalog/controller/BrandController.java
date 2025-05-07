@@ -21,9 +21,9 @@ public class BrandController {
 	 private BrandServiceImpl brandService;
 
     @GetMapping("brands/")
-     public List<String> findByName(@RequestParam(value = "name", required = false) String name) {
+     public List<BrandDto> findByName(@RequestParam(value = "name", required = false) String name) {
         if (name == null || name.isBlank()) return brandService.findAllBrands();
-        List<String> brands = brandService.findLikeNameBrands(name);
+        List<BrandDto> brands = brandService.findLikeNameBrands(name);
         if (brands.isEmpty()) {
             throw new ResourceNotFoundException("No brands found with the name: " + name);
         }

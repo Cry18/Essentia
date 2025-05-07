@@ -25,23 +25,32 @@ public class PerfumeNoteServiceImpl implements PerfumeNoteService {
             throw new ResourceNotFoundException("PerfumeNote not found with id: " + id);
         }
         PerfumeNoteDto noteDto = new PerfumeNoteDto(note.getName(), note.getDescription());
+        noteDto.setId(note.getId());
         return noteDto;
     }
 
     @Override
-    public List<String> findAllPerfumeNotes() {
+    public List<PerfumeNoteDto> findAllPerfumeNotes() {
         
         List<PerfumeNote> notes = perfumeNoteRepository.findAll();
-        List<String> noteNames = new ArrayList<>();
+        List<PerfumeNoteDto> perfumeNoteDtos = new ArrayList<>();
         for (PerfumeNote note : notes) {
-            noteNames.add(note.getName());
+            PerfumeNoteDto p =  new PerfumeNoteDto(note.getName(),null);
+            p.setId(note.getId());
+            perfumeNoteDtos.add(p);
         }
-        return noteNames;
+        return perfumeNoteDtos;
     }
 
     @Override
-    public List<String> findLikeNamePerfumeNotes(String name) {
-        List<String> noteNames = perfumeNoteRepository.findLikeName(name);
-        return noteNames;
+    public List<PerfumeNoteDto> findLikeNamePerfumeNotes(String name) {
+        List<PerfumeNote> notes = perfumeNoteRepository.findLikeName(name);
+        List<PerfumeNoteDto> perfumeNoteDtos = new ArrayList<>();
+        for (PerfumeNote note : notes) {
+            PerfumeNoteDto p =  new PerfumeNoteDto(note.getName(),null);
+            p.setId(note.getId());
+            perfumeNoteDtos.add(p);
+        }
+        return perfumeNoteDtos;
     }
 }

@@ -16,6 +16,6 @@ public interface ParfumerRepository extends CrudRepository<Parfumer,Integer> {
     @Override
     List<Parfumer> findAll();
 
-	@Query("SELECT p.name FROM Parfumer p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
-    List<String> findLikeName(@Param("name") String name);
+	@Query("SELECT p FROM Parfumer p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
+    List<Parfumer> findLikeName(@Param("name") String name);
 }

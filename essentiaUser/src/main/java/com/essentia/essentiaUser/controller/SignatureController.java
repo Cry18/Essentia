@@ -1,12 +1,12 @@
 package com.essentia.essentiaUser.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.essentia.essentiaUser.service.PerfumeService;
+import com.essentia.essentiaUser.service.impl.PerfumeServiceImpl;
 
 
 @RestController
@@ -14,11 +14,11 @@ import com.essentia.essentiaUser.service.PerfumeService;
 public class SignatureController {
     
     @Autowired
-    private PerfumeService perfumeService;
+    private PerfumeServiceImpl perfumeService;
 
-    @GetMapping("signature")
+    @PutMapping("signature")
     public void setSignaure(@RequestParam(value = "userId") int userId, 
-                            @RequestParam(value = "PerfumeId") int perfumeId) {
-        perfumeService.setSignaure(userId, perfumeId);
+                            @RequestParam(value = "perfumeId") int perfumeId) {
+        perfumeService.setSignature(userId, perfumeId);
     }
 }

@@ -49,22 +49,32 @@ public class PerfumeServiceImpl implements PerfumeService {
             reviewDto.add(new ReviewDto(userName, review.getTitle(), review.getDescription(), review.getVote(), review.getSeasonality(), review.isGender(), review.getSillage(), review.getLongevity()));
         }
         PerfumeDto perfumeDto = new PerfumeDto(perfume.getName(), perfume.getBrand().getName(), perfume.getDescription(), notesDto, parfumers, reviewDto);
+        perfumeDto.setId(perfume.getId());
         return perfumeDto;
     }
 
     @Override
-    public List<String> findAllPerfumes() {
+    public List<PerfumeDto> findAllPerfumes() {
         List<Perfume> perfumes = perfumeRepository.findAll();
-        List<String> perfumeNames = new ArrayList<>();
+        List<PerfumeDto> perfumeDtos = new ArrayList<>();
         for (Perfume perfume : perfumes) {
-            perfumeNames.add(perfume.getName());
+            PerfumeDto p = new PerfumeDto(perfume.getName(),perfume.getBrand().getName(),null,null,null,null);
+            p.setId(perfume.getId());
+            perfumeDtos.add(p);
         }
-        return perfumeNames;
+        return perfumeDtos;
     }
 
     @Override
-    public List<String> findPerfumesByFilters(String name, String parfumer, String brand, String note) {
-        return perfumeRepository.findByFilters(name, parfumer, brand, note);
+    public List<PerfumeDto> findPerfumesByFilters(String name, String parfumer, String brand, String note) {
+        List<Perfume> perfumes = perfumeRepository.findByFilters(name, parfumer, brand, note);
+        List<PerfumeDto> perfumeDtos = new ArrayList<>();
+        for (Perfume perfume : perfumes) {
+            PerfumeDto p = new PerfumeDto(perfume.getName(),perfume.getBrand().getName(),null,null,null,null);
+            p.setId(perfume.getId());
+            perfumeDtos.add(p);
+        }
+        return perfumeDtos;
     }
     
 }

@@ -114,6 +114,19 @@ public class PerfumeServiceImpl implements PerfumeService {
             // Save the updated perfume
             perfumeRepository.save(perfumeUpdated);
         }
+        /*        for (int i = 0; i < perfume.getNotes().size(); i++) {
+            PerfumeNote Note = perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName());
+            if (Note == null) {
+                throw new ResourceNotFoundException("Note not found: " + perfume.getNotes().get(i).getName());
+            }
+            PerfumePrfNotes perfumeNote = new PerfumePrfNotes(
+                    newPerfume,
+                    Note,
+                    perfume.getNotes().get(i).getType()
+            );
+            perfumePrfNoteRepository.save(perfumeNote);
+            } */
+
     }
 
     @Override
@@ -121,7 +134,7 @@ public class PerfumeServiceImpl implements PerfumeService {
         Perfume perfume = perfumeRepository.findById(id);
 		if (perfume != null) {
 			perfumeRepository.delete(perfume);
-		}
+		} else throw new ResourceNotFoundException("Perfume not found with id: " + id);
     }
     
 }

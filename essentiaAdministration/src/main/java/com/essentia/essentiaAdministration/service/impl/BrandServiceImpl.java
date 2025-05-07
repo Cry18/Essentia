@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.essentia.essentiaAdministration.dto.BrandDto;
 import com.essentia.essentiaAdministration.entity.Brand;
+import com.essentia.essentiaAdministration.exception.ResourceNotFoundException;
 import com.essentia.essentiaAdministration.repository.BrandRepository;
 import com.essentia.essentiaAdministration.service.BrandService;
 @Service
@@ -27,7 +28,6 @@ public class BrandServiceImpl implements BrandService {
 	@Override
 	public void updateBrand(int id, BrandDto b) {
 		Brand brand = brandRepository.findById(id);	
-		// Aggiorna solo i campi forniti
 		if (b.getName() != null) {
 			brand.setName(b.getName());
 		}
@@ -43,7 +43,7 @@ public class BrandServiceImpl implements BrandService {
 		Brand brand = brandRepository.findById(id);
 		if (brand != null) {
 			brandRepository.delete(brand);
-		}
+		} else throw new ResourceNotFoundException("Brand not found with id: " + id);
 		
 	}
 

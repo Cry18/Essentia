@@ -16,6 +16,6 @@ public interface BrandRepository extends CrudRepository<Brand,Integer>{
         @Override
     List<Brand> findAll();
 
-	@Query("SELECT b.name FROM Brand b WHERE LOWER(b.name) LIKE LOWER(CONCAT('%', :name, '%'))")
-    List<String> findLikeName(@Param("name") String name);
+	@Query("SELECT b FROM Brand b WHERE LOWER(b.name) LIKE LOWER(CONCAT('%', :name, '%'))")
+    List<Brand> findLikeName(@Param("name") String name);
 }

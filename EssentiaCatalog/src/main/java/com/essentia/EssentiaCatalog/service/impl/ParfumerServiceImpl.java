@@ -24,24 +24,33 @@ public class ParfumerServiceImpl implements ParfumerService {
             throw new ResourceNotFoundException("Parfumer not found with id: " + id);
         }
         ParfumerDto parfumerDto = new ParfumerDto(parfumer.getName(), parfumer.getDescription(), parfumer.getNazionality());
+        parfumerDto.setId(parfumer.getId());
         return parfumerDto;
     }
 
     @Override
-    public List<String> findAllParfumers() {
+    public List<ParfumerDto> findAllParfumers() {
         
         List<Parfumer> parfumers = parfumerRepository.findAll();
-        List<String> parfumerNames = new ArrayList<>();
+        List<ParfumerDto> parfumerDtos = new ArrayList<>();
         for (Parfumer parfumer : parfumers) {
-            parfumerNames.add(parfumer.getName());
+            ParfumerDto p =  new ParfumerDto(parfumer.getName(),null,null);
+            p.setId(parfumer.getId());
+            parfumerDtos.add(p);
         }
-        return parfumerNames;
+        return parfumerDtos;
     }
 
     @Override
-    public List<String> findLikeNameParfumers(String name) {
-        List<String> parfumerNames = parfumerRepository.findLikeName(name);
-        return parfumerNames;
+    public List<ParfumerDto> findLikeNameParfumers(String name) {
+        List<Parfumer> parfumers = parfumerRepository.findLikeName(name);
+        List<ParfumerDto> parfumerDtos = new ArrayList<>();
+        for (Parfumer parfumer : parfumers) {
+            ParfumerDto p =  new ParfumerDto(parfumer.getName(),null,null);
+            p.setId(parfumer.getId());
+            parfumerDtos.add(p);
+        }
+        return parfumerDtos;
     }
 }
 

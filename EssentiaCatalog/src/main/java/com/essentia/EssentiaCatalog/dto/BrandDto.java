@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 
 public class BrandDto {
 
+    private int id;
 	@NotBlank(message = "il nome deve contenere almeno un carattere diverso da spazio")
 	@Size(max = 30, message = "il nome del brand può contenere al massimo 30 caratteri")
     private String name;
@@ -24,6 +25,12 @@ public class BrandDto {
     	this.nazionality = nazionality;
     }
 
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
