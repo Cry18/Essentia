@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class PerfumePrfNotesDto {
+
     @NotBlank(message = "il nome deve contenere almeno un carattere diverso da spazio")
     @Size(max = 30, message = "il nome della nota può contenere al massimo 30 caratteri")
     private String name;
@@ -23,7 +24,6 @@ public class PerfumePrfNotesDto {
         this.type = type;
     }
 
-    // Getters and Setters
     public String getName() {
         return name;
     }
