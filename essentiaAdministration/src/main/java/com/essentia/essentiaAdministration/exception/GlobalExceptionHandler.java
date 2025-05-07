@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -37,7 +38,7 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ResponseBody
 	public ErrorResponse handleResourceNotFoundErrors (ResourceNotFoundException e) {
 		ErrorResponse response = new ErrorResponse();
@@ -54,6 +55,17 @@ public class GlobalExceptionHandler {
         ErrorResponse response = new ErrorResponse();
 		response.setTimestamp(LocalDateTime.now());
 		response.setError("Internal Server Error");
+		response.setMessage(e.getMessage());
+		return response;
+    }
+
+	@ExceptionHandler(NoHandlerFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ResponseBody
+    public ErrorResponse handleNoHandlerFoundException(Exception e) {
+        ErrorResponse response = new ErrorResponse();
+		response.setTimestamp(LocalDateTime.now());
+		response.setError("Risorsa non trovata");
 		response.setMessage(e.getMessage());
 		return response;
     }
