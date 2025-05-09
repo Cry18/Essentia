@@ -16,19 +16,20 @@ public class ParfumerServiceImpl implements ParfumerService {
 
 
     @Override  
-    public void create(ParfumerDto p) {
+    public ParfumerDto create(ParfumerDto p) {
         Parfumer parfumerNew = new Parfumer(
                 p.getName(),
                 p.getDescription(),
                 p.getNazionality());
         
         parfumerRepository.save(parfumerNew); 
+        p.setId(parfumerNew.getId());
+        return p;
     }
 
     @Override
-    public void updateparfumer(int id, ParfumerDto p) {
+    public ParfumerDto updateparfumer(int id, ParfumerDto p) {
         Parfumer parfumer = parfumerRepository.findById(id);	
-        // Aggiorna solo i campi forniti
         if (p.getName() != null) {
             parfumer.setName(p.getName());
         }
@@ -39,14 +40,19 @@ public class ParfumerServiceImpl implements ParfumerService {
             parfumer.setNazionality(p.getNazionality());
         }
     
-        parfumerRepository.save(parfumer);		
+        parfumerRepository.save(parfumer);
+        p.setId(id);
+        return p;
     }
 
     @Override
-    public void deleteById(int id) {    
+    public ParfumerDto deleteById(int id) {    
         Parfumer parfumer = parfumerRepository.findById(id);
         if (parfumer != null) {
             parfumerRepository.delete(parfumer);
         }else throw new ResourceNotFoundException("Parfumer not found with id: " + id);
+        ParfumerDto ParfumerDto = new ParfumerDto(parfumer.getName(), parfumer.getDescription(), parfumer.getNazionality());
+        ParfumerDto.setId(id);
+        return ParfumerDto;
 }
 }

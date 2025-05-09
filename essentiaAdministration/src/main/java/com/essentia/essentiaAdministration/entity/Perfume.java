@@ -44,6 +44,9 @@ public class Perfume {
 		@OneToMany(mappedBy = "perfume", cascade= CascadeType.ALL)
 		private List<Review> reviews = new ArrayList<>();
 
+		@ManyToMany(mappedBy = "favorites")
+    	private List<User> users;
+
 	public Perfume() {
 	}
 
@@ -105,5 +108,11 @@ public class Perfume {
 
 		public void setPerfumePrfNotes(List<PerfumePrfNotes> PerfumePrfNotes) {
 			this.PerfumePrfNotes = PerfumePrfNotes;
+		}
+		public List<User> getUsers() {
+			return users;
+		}
+		public void setUsers(List<User> users) {
+			this.users = users;
 		}
 }

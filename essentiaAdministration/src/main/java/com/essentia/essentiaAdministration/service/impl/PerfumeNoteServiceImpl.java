@@ -18,18 +18,19 @@ public class PerfumeNoteServiceImpl implements PerfumeNoteService{
 
 
 	@Override
-	public void create(PerfumeNoteDto prfNote) {
+	public PerfumeNoteDto create(PerfumeNoteDto prfNote) {
 		PerfumeNote prfNew = new PerfumeNote(
 				prfNote.getName(),
 				prfNote.getDescription());
 		  
 		  perfumeNoteRepository.save(prfNew);
+		  prfNote.setId(prfNew.getId());
+		  return prfNote;
 	}
 
 	@Override
-	public void updatePerfumeNote(int id, PerfumeNoteDto note) {
+	public PerfumeNoteDto updatePerfumeNote(int id, PerfumeNoteDto note) {
 		PerfumeNote prfNote = perfumeNoteRepository.findById(id);	
-		// Aggiorna solo i campi forniti
 		if (note.getName() != null) {
 			prfNote.setName(note.getName());
 		}
@@ -38,15 +39,19 @@ public class PerfumeNoteServiceImpl implements PerfumeNoteService{
 		}
 	
 		perfumeNoteRepository.save(prfNote);
+		note.setId(id);
+		return note;
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public PerfumeNoteDto deleteById(int id) {
 		PerfumeNote prfNote = perfumeNoteRepository.findById(id);
 		if (prfNote != null) {
 			perfumeNoteRepository.delete(prfNote);
 		} else throw new ResourceNotFoundException("PerfumeNote not found with id: " + id);
-		
+		PerfumeNoteDto PerfumeNoteDto = new PerfumeNoteDto(prfNote.getName(), prfNote.getDescription());
+		PerfumeNoteDto.setId(id);
+		return PerfumeNoteDto;
 	}
 
 

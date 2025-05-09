@@ -24,17 +24,17 @@ public class ParfumerController {
 	 private ParfumerServiceImpl parfumerServiceImpl;
 
     @PostMapping("add/parfumer")
-        public void addParfumer(@RequestBody @Valid ParfumerDto parfumer) {
-        	parfumerServiceImpl.create(parfumer);
+        public ParfumerDto addParfumer(@RequestBody @Valid ParfumerDto parfumer) {
+        	return parfumerServiceImpl.create(parfumer);
         }  
 
     @PutMapping("edit/parfumer/{id}")
-    	public void editParfumer(@PathVariable int id, @RequestBody @Valid ParfumerDto parfumer) {
-    		parfumerServiceImpl.updateparfumer(id, parfumer);
+    	public ParfumerDto editParfumer(@PathVariable int id, @RequestBody @Valid ParfumerDto parfumer) {
+    		return parfumerServiceImpl.updateparfumer(id, parfumer);
         }
 
     @DeleteMapping("delete/parfumer/{id}")
-    	public void deleteParfumer(@PathVariable int id) {
-    		parfumerServiceImpl.deleteById(id);
+    	public ParfumerDto deleteParfumer(@PathVariable int id) {
+    		return parfumerServiceImpl.deleteById(id);
     	}
 }

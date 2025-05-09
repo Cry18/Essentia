@@ -24,17 +24,17 @@ public class PerfumeNoteController {
 	 private PerfumeNoteServiceImpl perfumeNoteService;
 
 	@PostMapping("add/perfumenote")
-	    public void addPerfumeNote(@RequestBody @Valid PerfumeNoteDto prfNote) {
-			perfumeNoteService.create(prfNote);
+	    public PerfumeNoteDto addPerfumeNote(@RequestBody @Valid PerfumeNoteDto prfNote) {
+			return perfumeNoteService.create(prfNote);
 	    }
 	
 	@PutMapping("edit/perfumenote/{id}")
-		public void editPerfumeNote(@PathVariable int id, @RequestBody @Valid PerfumeNoteDto prfNote) {
-			perfumeNoteService.updatePerfumeNote(id, prfNote);
+		public PerfumeNoteDto editPerfumeNote(@PathVariable int id, @RequestBody @Valid PerfumeNoteDto prfNote) {
+			return perfumeNoteService.updatePerfumeNote(id, prfNote);
 	    }
 	
 	@DeleteMapping("delete/perfumenote/{id}")
-		public void deletePerfumeNote(@PathVariable int id) {
-			perfumeNoteService.deleteById(id);
+		public PerfumeNoteDto deletePerfumeNote(@PathVariable int id) {
+			return perfumeNoteService.deleteById(id);
 		}
 }

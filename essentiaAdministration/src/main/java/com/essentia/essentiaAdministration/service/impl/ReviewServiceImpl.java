@@ -17,10 +17,11 @@ public class ReviewServiceImpl implements ReviewService {
     private ReviewRepository reviewRepository;
 
     @Override
-    public void deleteById(int id) {    
+    public int deleteById(int id) {    
         Review review = reviewRepository.findById(id);
         if (review != null) {
             reviewRepository.delete(review);
         } else throw new ResourceNotFoundException("Review not found with id: " + id);
+        return id;
 }
 }

@@ -31,8 +31,8 @@ public class User {
 	@ManyToMany
 	@JoinTable(
 			name = "favorites",
-			joinColumns = @JoinColumn (name = "perfume"),
-			inverseJoinColumns = @JoinColumn(name = "user")
+			joinColumns = @JoinColumn (name = "user"),
+			inverseJoinColumns = @JoinColumn(name = "perfume")
 			)
 	private List<Perfume> favorites;
 	

@@ -46,8 +46,8 @@ public class PerfumeServiceImpl implements PerfumeService {
 
     @Override
     @Transactional
-    public void create(PerfumeDto perfume) {
-        Brand brand = brandRepository.findByName(perfume.getBrand());
+    public PerfumeDto create(PerfumeDto perfume) {
+        Brand brand = brandRepository.findById(perfume.getBrand());
         if (brand == null){
             throw new ResourceNotFoundException("Brand not found: " + perfume.getBrand());
         }
@@ -56,12 +56,12 @@ public class PerfumeServiceImpl implements PerfumeService {
         List<Parfumer> parfumers = new ArrayList<>();
         //popola la lista a partire dalla lista di nomi dei profumieri del dto
         for (int i = 0; i < perfume.getParfumers().size(); i++) {
-            String parfumerName = perfume.getParfumers().get(i);
-            Parfumer parfumer = parfumerRepository.findByName(parfumerName);
+            int parfumerId = perfume.getParfumers().get(i);
+            Parfumer parfumer = parfumerRepository.findById(parfumerId);
             if (parfumer != null) {
                 parfumers.add(parfumer);
             } else {
-                throw new ResourceNotFoundException("Parfumer not found: " + parfumerName);
+                throw new ResourceNotFoundException("Parfumer not found with id: " + parfumerId);
             }
         }
 
@@ -76,9 +76,9 @@ public class PerfumeServiceImpl implements PerfumeService {
 
         //popola la tabella ponte PerfumePrfNotes
         for (int i = 0; i < perfume.getNotes().size(); i++) {
-            PerfumeNote Note = perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName());
+            PerfumeNote Note = perfumeNoteRepository.findById(perfume.getNotes().get(i).getNoteId());
             if (Note == null) {
-                throw new ResourceNotFoundException("Note not found: " + perfume.getNotes().get(i).getName());
+                throw new ResourceNotFoundException("Note not found: " + perfume.getNotes().get(i).getNoteId());
             }
             PerfumePrfNotes perfumeNote = new PerfumePrfNotes(
                     newPerfume,
@@ -87,29 +87,32 @@ public class PerfumeServiceImpl implements PerfumeService {
             );
             perfumePrfNoteRepository.save(perfumeNote);
             }
+            perfume.setId(newPerfume.getId());
+            return perfume;
         }
     
 
     @Override
-    public void updatePerfume(int id, PerfumeDto perfume) {
+    @Transactional
+    public PerfumeDto updatePerfume(int id, PerfumeDto perfume) {
         Perfume perfumeUpdated = perfumeRepository.findById(id);
         if (perfumeUpdated != null) {
             perfumeUpdated.setName(perfume.getName());
             perfumeUpdated.setDescription(perfume.getDescription());
 
             // Update the brand
-            Brand brand = brandRepository.findByName(perfume.getBrand());
+            Brand brand = brandRepository.findById(perfume.getBrand());
             if (brand == null) {
-                throw new ResourceNotFoundException("Brand not found: " + perfume.getBrand());
+                throw new ResourceNotFoundException("Brand not found: with id:" + perfume.getBrand());
             }
             perfumeUpdated.setBrand(brand);
 
             // Update the parfumers
             List<Parfumer> parfumers = new ArrayList<>();
-            for (String parfumerName : perfume.getParfumers()) {
-                Parfumer parfumer = parfumerRepository.findByName(parfumerName);
+            for (int parfumerId : perfume.getParfumers()) {
+                Parfumer parfumer = parfumerRepository.findById(parfumerId);
                 if (parfumer == null) {
-                    throw new ResourceNotFoundException("Parfumer not found: " + parfumerName);
+                    throw new ResourceNotFoundException("Parfumer not found: with id:" + parfumerId);
                 }
                     parfumers.add(parfumer);
             }
@@ -118,34 +121,39 @@ public class PerfumeServiceImpl implements PerfumeService {
             // Save the updated perfume
             perfumeRepository.save(perfumeUpdated);
         }
-        /*        for (int i = 0; i < perfume.getNotes().size(); i++) {
-            PerfumeNote Note = perfumeNoteRepository.findByName(perfume.getNotes().get(i).getName());
+                for (int i = 0; i < perfume.getNotes().size(); i++) {
+            PerfumeNote Note = perfumeNoteRepository.findById(perfume.getNotes().get(i).getNoteId());
             if (Note == null) {
-                throw new ResourceNotFoundException("Note not found: " + perfume.getNotes().get(i).getName());
+                throw new ResourceNotFoundException("Note not found: " + perfume.getNotes().get(i).getNoteId());
             }
             PerfumePrfNotes perfumeNote = new PerfumePrfNotes(
-                    newPerfume,
+                    perfumeUpdated,
                     Note,
                     perfume.getNotes().get(i).getType()
             );
             perfumePrfNoteRepository.save(perfumeNote);
-            } */
-
+            }
+            perfume.setId(id);
+            return perfume;
     }
 
     @Override
-    public void deleteById(int id) {
+    @Transactional
+    public PerfumeDto deleteById(int id) {
         Perfume perfume = perfumeRepository.findById(id);
 		if (perfume != null) {
 			perfumeRepository.delete(perfume);
 		} else throw new ResourceNotFoundException("Perfume not found with id: " + id);
+        PerfumeDto perfumeDto = new PerfumeDto(perfume.getName(), perfume.getBrand().getId(), null, null, null);
+        perfumeDto.setId(id);
+        return perfumeDto;
     }
     
     @Override
     public PerfumeDto findMostDesiredPerfume() {
         Perfume mostDesiredPerfume = perfumeRepository.findMostDesiredPerfume();
         if (mostDesiredPerfume != null) {
-            PerfumeDto perfumeDto = new PerfumeDto(mostDesiredPerfume.getName(), mostDesiredPerfume.getBrand().getName(),null,null,null);
+            PerfumeDto perfumeDto = new PerfumeDto(mostDesiredPerfume.getName(), mostDesiredPerfume.getBrand().getId(),null,null,null);
             perfumeDto.setId(mostDesiredPerfume.getId());
             return perfumeDto;
         } else {
@@ -157,7 +165,7 @@ public class PerfumeServiceImpl implements PerfumeService {
     public PerfumeDto findMostAppreciatedPerfume() {
         Perfume mostAppreciatedPerfume = reviewRepository.findMostAppreciatedPerfume();
         if (mostAppreciatedPerfume != null) {
-            PerfumeDto perfumeDto = new PerfumeDto(mostAppreciatedPerfume.getName(), mostAppreciatedPerfume.getBrand().getName(),null,null,null);
+            PerfumeDto perfumeDto = new PerfumeDto(mostAppreciatedPerfume.getName(), mostAppreciatedPerfume.getBrand().getId(),null,null,null);
             perfumeDto.setId(mostAppreciatedPerfume.getId());
             return perfumeDto;
         } else {

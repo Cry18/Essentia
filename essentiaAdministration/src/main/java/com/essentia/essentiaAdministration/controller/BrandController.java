@@ -24,17 +24,17 @@ public class BrandController {
 	 private BrandServiceImpl brandService;	
 
     @PostMapping("add/brand")
-     public void addBrand(@RequestBody @Valid BrandDto brand) {
-        brandService.create(brand);
+     public BrandDto addBrand(@RequestBody @Valid BrandDto brand) {
+        return brandService.create(brand);
     }
 
     @PutMapping("edit/brand/{id}")
-     public void editBrand(@PathVariable int id, @RequestBody @Valid BrandDto brand) {
-        brandService.updateBrand(id, brand);
+     public BrandDto editBrand(@PathVariable int id, @RequestBody @Valid BrandDto brand) {
+        return brandService.updateBrand(id, brand);
     }
 
     @DeleteMapping("delete/brand/{id}")
-     public void deleteBrand(@PathVariable int id) {
-        brandService.deleteById(id);
+     public BrandDto deleteBrand(@PathVariable int id) {
+        return brandService.deleteById(id);
     }
 }

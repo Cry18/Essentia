@@ -23,17 +23,17 @@ public class PerfumeController {
     private PerfumeServiceImpl perfumeService;
 
     @PostMapping("add/perfume")
-    public void addPerfume(@RequestBody @Valid PerfumeDto perfume) {
-        perfumeService.create(perfume);
+    public PerfumeDto addPerfume(@RequestBody @Valid PerfumeDto perfume) {
+        return perfumeService.create(perfume);
     }
 
     @PutMapping("edit/perfume/{id}")
-    public void editPerfume(@PathVariable int id, @RequestBody @Valid PerfumeDto perfume) {
-        perfumeService.updatePerfume(id, perfume);
+    public PerfumeDto editPerfume(@PathVariable int id, @RequestBody @Valid PerfumeDto perfume) {
+        return perfumeService.updatePerfume(id, perfume);
     }
     
     @DeleteMapping("delete/perfume/{id}")
-    public void deletePerfume(@PathVariable int id) {
-        perfumeService.deleteById(id);
+    public PerfumeDto deletePerfume(@PathVariable int id) {
+        return perfumeService.deleteById(id);
     }
 }
