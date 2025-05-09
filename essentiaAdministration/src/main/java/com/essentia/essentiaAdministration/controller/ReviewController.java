@@ -20,7 +20,7 @@ public class ReviewController {
 	 private ReviewServiceImpl reviewServiceImpl;
 
     @DeleteMapping("delete/review/{id}")
-    	public void deleteReview(@PathVariable int id) {
-    		reviewServiceImpl.deleteById(id);
+    	public int deleteReview(@PathVariable int id) {
+    		return reviewServiceImpl.deleteById(id);
     	}
 }

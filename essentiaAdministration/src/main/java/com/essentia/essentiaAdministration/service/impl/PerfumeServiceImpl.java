@@ -156,9 +156,7 @@ public class PerfumeServiceImpl implements PerfumeService {
             PerfumeDto perfumeDto = new PerfumeDto(mostDesiredPerfume.getName(), mostDesiredPerfume.getBrand().getId(),null,null,null);
             perfumeDto.setId(mostDesiredPerfume.getId());
             return perfumeDto;
-        } else {
-            throw new ResourceNotFoundException("No desired perfumes found.");
-        }
+        } else return null;
     }
 
     @Override
@@ -168,8 +166,6 @@ public class PerfumeServiceImpl implements PerfumeService {
             PerfumeDto perfumeDto = new PerfumeDto(mostAppreciatedPerfume.getName(), mostAppreciatedPerfume.getBrand().getId(),null,null,null);
             perfumeDto.setId(mostAppreciatedPerfume.getId());
             return perfumeDto;
-        } else {
-            throw new ResourceNotFoundException("No appreciated perfumes found.");
-        }
+        } else return null;
     }
 }

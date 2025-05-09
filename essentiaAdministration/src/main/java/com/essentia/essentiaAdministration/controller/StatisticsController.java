@@ -26,10 +26,10 @@ public class StatisticsController {
         Map<String, Object> response = new HashMap<>();
 
         PerfumeDto mostDesiredPerfume = perfumeService.findMostDesiredPerfume();
-        response.put("Profumo più desiderato", mostDesiredPerfume);
+        response.put("Most desired perfume:", mostDesiredPerfume);
         
         PerfumeDto mostAppreciatedPerfume = perfumeService.findMostAppreciatedPerfume();
-        response.put("Profumo più apprezzato", mostAppreciatedPerfume);
+        response.put("Most appriciated perfume:", mostAppreciatedPerfume);
         return response;
     }
 }
