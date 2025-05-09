@@ -1,4 +1,4 @@
-package com.essentia.essentiaUser.controller;
+package com.essentia.essentiauser.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.essentia.essentiaUser.entity.Shelf;
-import com.essentia.essentiaUser.entity.User;
-import com.essentia.essentiaUser.repository.UserRepository;
-import com.essentia.essentiaUser.repository.ShelfRepository;
-import com.essentia.essentiaUser.service.impl.PerfumeServiceImpl;
+import com.essentia.essentiauser.entity.Shelf;
+import com.essentia.essentiauser.entity.User;
+import com.essentia.essentiauser.repository.UserRepository;
+import com.essentia.essentiauser.repository.ShelfRepository;
+import com.essentia.essentiauser.service.impl.PerfumeServiceImpl;
 
 import jakarta.websocket.server.PathParam;
 

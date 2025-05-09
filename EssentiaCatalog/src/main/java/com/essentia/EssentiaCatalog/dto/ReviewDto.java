@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.dto;
+package com.essentia.essentiacatalog.dto;
 
 public class ReviewDto {
     String user;

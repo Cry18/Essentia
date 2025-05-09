@@ -1,4 +1,4 @@
-package com.essentia.essentiaUser;
+package com.essentia.essentiauser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

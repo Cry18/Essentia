@@ -1,12 +1,12 @@
-package com.essentia.essentiaAdministration.service.impl;
+package com.essentia.essentiaadministration.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.essentia.essentiaAdministration.entity.Review;
-import com.essentia.essentiaAdministration.exception.ResourceNotFoundException;
-import com.essentia.essentiaAdministration.repository.ReviewRepository;
-import com.essentia.essentiaAdministration.service.ReviewService;
+import com.essentia.essentiaadministration.entity.Review;
+import com.essentia.essentiaadministration.exception.ResourceNotFoundException;
+import com.essentia.essentiaadministration.repository.ReviewRepository;
+import com.essentia.essentiaadministration.service.ReviewService;
 
 
 

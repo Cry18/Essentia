@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.repository;
+package com.essentia.essentiacatalog.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.essentia.EssentiaCatalog.entity.Brand;
+import com.essentia.essentiacatalog.entity.Brand;
 
 @Repository
 public interface BrandRepository extends CrudRepository<Brand,Integer>{

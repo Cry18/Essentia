@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.exception;
+package com.essentia.essentiacatalog.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

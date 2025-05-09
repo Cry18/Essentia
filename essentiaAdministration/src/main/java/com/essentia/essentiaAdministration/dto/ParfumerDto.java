@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration.dto;
+package com.essentia.essentiaadministration.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

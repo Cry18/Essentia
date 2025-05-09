@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.entity;
+package com.essentia.essentiacatalog.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

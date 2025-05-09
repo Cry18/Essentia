@@ -1,4 +1,4 @@
-package com.essentia.essentiaUser.service;
+package com.essentia.essentiauser.service;
 
 import java.util.List;
 

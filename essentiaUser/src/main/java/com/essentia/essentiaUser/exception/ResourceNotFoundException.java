@@ -1,4 +1,4 @@
-package com.essentia.essentiaUser.exception;
+package com.essentia.essentiauser.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

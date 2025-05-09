@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.service.impl;
+package com.essentia.essentiacatalog.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.essentia.EssentiaCatalog.dto.ParfumerDto;
-import com.essentia.EssentiaCatalog.entity.Parfumer;
-import com.essentia.EssentiaCatalog.exception.ResourceNotFoundException;
-import com.essentia.EssentiaCatalog.repository.ParfumerRepository;
-import com.essentia.EssentiaCatalog.service.ParfumerService;
+import com.essentia.essentiacatalog.dto.ParfumerDto;
+import com.essentia.essentiacatalog.entity.Parfumer;
+import com.essentia.essentiacatalog.exception.ResourceNotFoundException;
+import com.essentia.essentiacatalog.repository.ParfumerRepository;
+import com.essentia.essentiacatalog.service.ParfumerService;
 @Service
 public class ParfumerServiceImpl implements ParfumerService {
 

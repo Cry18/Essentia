@@ -1,6 +1,6 @@
-package com.essentia.essentiaUser.service;
+package com.essentia.essentiauser.service;
 
-import com.essentia.essentiaUser.dto.ShelfDto;
+import com.essentia.essentiauser.dto.ShelfDto;
 
 public interface ShelfService {
     ShelfDto createShelf(String name);

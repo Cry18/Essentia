@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration;
+package com.essentia.essentiaadministration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

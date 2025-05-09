@@ -1,11 +1,11 @@
-package com.essentia.essentiaAdministration.repository;
+package com.essentia.essentiaadministration.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.essentia.essentiaAdministration.entity.Perfume;
-import com.essentia.essentiaAdministration.entity.Review;
+import com.essentia.essentiaadministration.entity.Perfume;
+import com.essentia.essentiaadministration.entity.Review;
 @Repository
 public interface ReviewRepository extends CrudRepository<Review,Integer>{
 	Review findById(int id);

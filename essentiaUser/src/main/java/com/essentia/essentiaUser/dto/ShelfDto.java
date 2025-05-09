@@ -1,4 +1,4 @@
-package com.essentia.essentiaUser.dto;
+package com.essentia.essentiauser.dto;
 
 import java.util.List;
 

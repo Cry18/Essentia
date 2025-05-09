@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration.exception;
+package com.essentia.essentiaadministration.exception;
 
 public class Violation {
 	

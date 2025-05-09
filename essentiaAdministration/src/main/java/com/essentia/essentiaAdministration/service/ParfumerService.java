@@ -1,6 +1,6 @@
-package com.essentia.essentiaAdministration.service;
+package com.essentia.essentiaadministration.service;
 
-import com.essentia.essentiaAdministration.dto.ParfumerDto;
+import com.essentia.essentiaadministration.dto.ParfumerDto;
 
 public interface ParfumerService {
 

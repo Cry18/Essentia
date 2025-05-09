@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration.controller;
+package com.essentia.essentiaadministration.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.essentia.essentiaAdministration.dto.PerfumeDto;
-import com.essentia.essentiaAdministration.service.PerfumeService;
+import com.essentia.essentiaadministration.dto.PerfumeDto;
+import com.essentia.essentiaadministration.service.PerfumeService;
 
 
 

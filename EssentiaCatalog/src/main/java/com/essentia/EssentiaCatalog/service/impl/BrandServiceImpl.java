@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.service.impl;
+package com.essentia.essentiacatalog.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.essentia.EssentiaCatalog.dto.BrandDto;
-import com.essentia.EssentiaCatalog.entity.Brand;
-import com.essentia.EssentiaCatalog.exception.ResourceNotFoundException;
-import com.essentia.EssentiaCatalog.repository.BrandRepository;
-import com.essentia.EssentiaCatalog.service.BrandService;
+import com.essentia.essentiacatalog.dto.BrandDto;
+import com.essentia.essentiacatalog.entity.Brand;
+import com.essentia.essentiacatalog.exception.ResourceNotFoundException;
+import com.essentia.essentiacatalog.repository.BrandRepository;
+import com.essentia.essentiacatalog.service.BrandService;
 @Service
 public class BrandServiceImpl implements BrandService {
 

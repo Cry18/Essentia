@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.repository;
+package com.essentia.essentiacatalog.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.essentia.EssentiaCatalog.entity.Perfume;
+import com.essentia.essentiacatalog.entity.Perfume;
 
 public interface PerfumeRepository extends CrudRepository<Perfume, Integer> {
     Perfume findById(int id);

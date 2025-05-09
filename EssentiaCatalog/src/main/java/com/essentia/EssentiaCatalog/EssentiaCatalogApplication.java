@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog;
+package com.essentia.essentiacatalog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

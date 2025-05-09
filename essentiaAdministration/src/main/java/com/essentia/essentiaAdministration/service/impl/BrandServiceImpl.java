@@ -1,14 +1,14 @@
-package com.essentia.essentiaAdministration.service.impl;
+package com.essentia.essentiaadministration.service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.essentia.essentiaAdministration.dto.BrandDto;
-import com.essentia.essentiaAdministration.entity.Brand;
-import com.essentia.essentiaAdministration.exception.ResourceNotFoundException;
-import com.essentia.essentiaAdministration.repository.BrandRepository;
-import com.essentia.essentiaAdministration.service.BrandService;
+import com.essentia.essentiaadministration.dto.BrandDto;
+import com.essentia.essentiaadministration.entity.Brand;
+import com.essentia.essentiaadministration.exception.ResourceNotFoundException;
+import com.essentia.essentiaadministration.repository.BrandRepository;
+import com.essentia.essentiaadministration.service.BrandService;
 @Service
 public class BrandServiceImpl implements BrandService {
 

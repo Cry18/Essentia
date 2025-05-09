@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.entity;
+package com.essentia.essentiacatalog.entity;
 
 import java.util.ArrayList;
 import java.util.List;

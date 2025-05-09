@@ -1,4 +1,4 @@
-package com.essentia.essentiaUser.exception;
+package com.essentia.essentiauser.exception;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration.controller;
+package com.essentia.essentiaadministration.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.essentia.essentiaAdministration.dto.BrandDto;
-import com.essentia.essentiaAdministration.service.impl.BrandServiceImpl;
+import com.essentia.essentiaadministration.dto.BrandDto;
+import com.essentia.essentiaadministration.service.impl.BrandServiceImpl;
 
 import jakarta.validation.Valid;
 

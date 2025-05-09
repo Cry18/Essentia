@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration.dto;
+package com.essentia.essentiaadministration.dto;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

@@ -1,6 +1,6 @@
-package com.essentia.essentiaAdministration.service;
+package com.essentia.essentiaadministration.service;
 
-import com.essentia.essentiaAdministration.dto.PerfumeNoteDto;
+import com.essentia.essentiaadministration.dto.PerfumeNoteDto;
 
 public interface PerfumeNoteService {
 	 //create, update, delete

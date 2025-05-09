@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.service.impl;
+package com.essentia.essentiacatalog.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,17 +6,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.essentia.EssentiaCatalog.dto.PerfumeDto;
-import com.essentia.EssentiaCatalog.dto.PerfumePrfNotesDto;
-import com.essentia.EssentiaCatalog.dto.ReviewDto;
-import com.essentia.EssentiaCatalog.entity.Perfume;
-import com.essentia.EssentiaCatalog.entity.PerfumePrfNotes;
-import com.essentia.EssentiaCatalog.entity.Review;
-import com.essentia.EssentiaCatalog.exception.ResourceNotFoundException;
-import com.essentia.EssentiaCatalog.repository.PerfumePrfNotesRepository;
-import com.essentia.EssentiaCatalog.repository.PerfumeRepository;
-import com.essentia.EssentiaCatalog.repository.ReviewRepository;
-import com.essentia.EssentiaCatalog.service.PerfumeService;
+import com.essentia.essentiacatalog.dto.PerfumeDto;
+import com.essentia.essentiacatalog.dto.PerfumePrfNotesDto;
+import com.essentia.essentiacatalog.dto.ReviewDto;
+import com.essentia.essentiacatalog.entity.Perfume;
+import com.essentia.essentiacatalog.entity.PerfumePrfNotes;
+import com.essentia.essentiacatalog.entity.Review;
+import com.essentia.essentiacatalog.exception.ResourceNotFoundException;
+import com.essentia.essentiacatalog.repository.PerfumePrfNotesRepository;
+import com.essentia.essentiacatalog.repository.PerfumeRepository;
+import com.essentia.essentiacatalog.repository.ReviewRepository;
+import com.essentia.essentiacatalog.service.PerfumeService;
 @Service
 public class PerfumeServiceImpl implements PerfumeService {
 

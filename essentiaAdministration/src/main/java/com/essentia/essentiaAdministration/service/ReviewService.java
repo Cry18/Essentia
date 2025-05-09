@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration.service;
+package com.essentia.essentiaadministration.service;
 
 
 public interface ReviewService {

@@ -1,4 +1,4 @@
-package com.essentia.essentiaUser.entity;
+package com.essentia.essentiauser.entity;
 
 import java.util.ArrayList;
 import java.util.List;

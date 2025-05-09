@@ -1,10 +1,10 @@
-package com.essentia.EssentiaCatalog.repository;
+package com.essentia.essentiacatalog.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.essentia.EssentiaCatalog.entity.PerfumePrfNotes;
+import com.essentia.essentiacatalog.entity.PerfumePrfNotes;
 
 public interface PerfumePrfNotesRepository extends CrudRepository<PerfumePrfNotes, Integer> {
     PerfumePrfNotes findById(int id);

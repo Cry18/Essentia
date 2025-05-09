@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.dto;
+package com.essentia.essentiacatalog.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

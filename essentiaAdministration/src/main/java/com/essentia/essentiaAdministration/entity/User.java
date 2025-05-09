@@ -1,4 +1,4 @@
-package com.essentia.essentiaAdministration.entity;
+package com.essentia.essentiaadministration.entity;
 
 import java.util.List;
 

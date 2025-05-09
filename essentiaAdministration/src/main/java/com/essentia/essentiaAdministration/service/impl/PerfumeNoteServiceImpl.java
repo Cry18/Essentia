@@ -1,14 +1,14 @@
-package com.essentia.essentiaAdministration.service.impl;
+package com.essentia.essentiaadministration.service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.essentia.essentiaAdministration.dto.PerfumeNoteDto;
-import com.essentia.essentiaAdministration.entity.PerfumeNote;
-import com.essentia.essentiaAdministration.exception.ResourceNotFoundException;
-import com.essentia.essentiaAdministration.repository.PerfumeNoteRepository;
-import com.essentia.essentiaAdministration.service.PerfumeNoteService;
+import com.essentia.essentiaadministration.dto.PerfumeNoteDto;
+import com.essentia.essentiaadministration.entity.PerfumeNote;
+import com.essentia.essentiaadministration.exception.ResourceNotFoundException;
+import com.essentia.essentiaadministration.repository.PerfumeNoteRepository;
+import com.essentia.essentiaadministration.service.PerfumeNoteService;
 
 @Service
 public class PerfumeNoteServiceImpl implements PerfumeNoteService{

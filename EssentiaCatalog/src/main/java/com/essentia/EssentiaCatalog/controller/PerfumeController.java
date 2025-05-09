@@ -1,4 +1,4 @@
-package com.essentia.EssentiaCatalog.controller;
+package com.essentia.essentiacatalog.controller;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.essentia.EssentiaCatalog.dto.PerfumeDto;
-import com.essentia.EssentiaCatalog.exception.ResourceNotFoundException;
-import com.essentia.EssentiaCatalog.service.impl.PerfumeServiceImpl;
+import com.essentia.essentiacatalog.dto.PerfumeDto;
+import com.essentia.essentiacatalog.exception.ResourceNotFoundException;
+import com.essentia.essentiacatalog.service.impl.PerfumeServiceImpl;
 
 @RestController
 @RequestMapping("/api/catalog/")
