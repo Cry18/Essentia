@@ -18,11 +18,15 @@ import com.essentia.essentiaAdministration.repository.ParfumerRepository;
 import com.essentia.essentiaAdministration.repository.PerfumeNoteRepository;
 import com.essentia.essentiaAdministration.repository.PerfumePrfNotesRepository;
 import com.essentia.essentiaAdministration.repository.PerfumeRepository;
+import com.essentia.essentiaAdministration.repository.ReviewRepository;
 import com.essentia.essentiaAdministration.service.PerfumeService;
 
 import jakarta.transaction.Transactional;
 @Service
 public class PerfumeServiceImpl implements PerfumeService {
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Autowired
     private PerfumeRepository perfumeRepository;
@@ -137,4 +141,27 @@ public class PerfumeServiceImpl implements PerfumeService {
 		} else throw new ResourceNotFoundException("Perfume not found with id: " + id);
     }
     
+    @Override
+    public PerfumeDto findMostDesiredPerfume() {
+        Perfume mostDesiredPerfume = perfumeRepository.findMostDesiredPerfume();
+        if (mostDesiredPerfume != null) {
+            PerfumeDto perfumeDto = new PerfumeDto(mostDesiredPerfume.getName(), mostDesiredPerfume.getBrand().getName(),null,null,null);
+            perfumeDto.setId(mostDesiredPerfume.getId());
+            return perfumeDto;
+        } else {
+            throw new ResourceNotFoundException("No desired perfumes found.");
+        }
+    }
+
+    @Override
+    public PerfumeDto findMostAppreciatedPerfume() {
+        Perfume mostAppreciatedPerfume = reviewRepository.findMostAppreciatedPerfume();
+        if (mostAppreciatedPerfume != null) {
+            PerfumeDto perfumeDto = new PerfumeDto(mostAppreciatedPerfume.getName(), mostAppreciatedPerfume.getBrand().getName(),null,null,null);
+            perfumeDto.setId(mostAppreciatedPerfume.getId());
+            return perfumeDto;
+        } else {
+            throw new ResourceNotFoundException("No appreciated perfumes found.");
+        }
+    }
 }
