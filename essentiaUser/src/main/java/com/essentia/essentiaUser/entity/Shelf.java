@@ -26,8 +26,8 @@ public class Shelf {
 	@ManyToMany
 	@JoinTable(
 			name = "perfume_shelf",
-			joinColumns = @JoinColumn (name = "perfume"),
-			inverseJoinColumns = @JoinColumn(name = "shelf")
+			joinColumns = @JoinColumn (name = "shelf"),
+			inverseJoinColumns = @JoinColumn(name = "perfume")
 			)	
 	private List<Perfume> perfumes;
 
@@ -61,6 +61,12 @@ public class Shelf {
 	}
 	public void setPerfumes(List<Perfume> perfumes) {
 		this.perfumes = perfumes;
+	}
+	public boolean addPerfume(Perfume perfume) {
+		return this.perfumes.add(perfume);
+	}
+	public boolean removePerfume(Perfume perfume) {
+		return this.perfumes.remove(perfume);
 	}
 	
 }

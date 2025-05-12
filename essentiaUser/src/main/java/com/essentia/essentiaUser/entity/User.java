@@ -31,8 +31,8 @@ public class User {
 	@ManyToMany
 	@JoinTable(
 			name = "favorites",
-			joinColumns = @JoinColumn (name = "perfume"),
-			inverseJoinColumns = @JoinColumn(name = "user")
+			joinColumns = @JoinColumn (name = "user"),
+			inverseJoinColumns = @JoinColumn(name = "perfume")
 			)
 	private List<Perfume> favorites;
 	
@@ -79,4 +79,15 @@ public class User {
 	public void setFavorites(List<Perfume> favorites) {
 		this.favorites = favorites;
 	}
+
+	public void addFavorite(Perfume perfume) {
+    if (!favorites.contains(perfume)) {
+        favorites.add(perfume);
+    }
+}
+
+public boolean removeFavorite(Perfume perfume) {
+    return favorites.remove(perfume);
+}
+
 }

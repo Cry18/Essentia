@@ -6,12 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.essentia.essentiauser.entity.Brand;
 import com.essentia.essentiauser.entity.Perfume;
 import com.essentia.essentiauser.entity.User;
-import com.essentia.essentiauser.repository.UserRepository;
 import com.essentia.essentiauser.repository.PerfumeRepository;
-import com.essentia.essentiauser.repository.ReviewRepository;
+import com.essentia.essentiauser.repository.UserRepository;
 import com.essentia.essentiauser.service.PerfumeService;
 @Service
 public class PerfumeServiceImpl implements PerfumeService {
@@ -21,9 +19,6 @@ public class PerfumeServiceImpl implements PerfumeService {
     
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private ReviewRepository reviewRepository;
 
     @Override
     public List<String> findAllPerfumes() {

@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "EssentiaUserApplication",
+      "request": "launch",
+      "mainClass": "com.essentia.essentiauser.EssentiaUserApplication",
+      "projectName": "essentiaUser"
+    },
+    {
+      "type": "java",
       "name": "EssentiaCatalogApplication",
       "request": "launch",
       "mainClass": "com.essentia.essentiacatalog.EssentiaCatalogApplication",

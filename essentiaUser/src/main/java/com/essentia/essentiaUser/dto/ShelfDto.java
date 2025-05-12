@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public class ShelfDto {
     
+    private int id;
     @NotBlank(message = "il nome deve contenere almeno un carattere diverso da spazio")
     @Size(max = 30, message = "il nome dello scaffale può contenere al massimo 30 caratteri")
     private String name;
@@ -19,6 +20,12 @@ public class ShelfDto {
         this.name = name;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

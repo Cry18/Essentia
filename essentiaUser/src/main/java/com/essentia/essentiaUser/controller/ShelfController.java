@@ -1,64 +1,52 @@
 package com.essentia.essentiauser.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.essentia.essentiauser.entity.Shelf;
-import com.essentia.essentiauser.entity.User;
-import com.essentia.essentiauser.repository.UserRepository;
-import com.essentia.essentiauser.repository.ShelfRepository;
-import com.essentia.essentiauser.service.impl.PerfumeServiceImpl;
-
-import jakarta.websocket.server.PathParam;
+import com.essentia.essentiauser.dto.ShelfDto;
+import com.essentia.essentiauser.service.impl.ShelfServiceImpl;
 
 @RestController
 @RequestMapping("/api/user/shelf/")
 public class ShelfController {
 
     @Autowired
-    private PerfumeServiceImpl perfumeService;
+    private ShelfServiceImpl shelfService;
 
-    @Autowired
-    private UserRepository userRepository;
 
-    @Autowired
-    private ShelfRepository shelfrepository;
-    /*@GetMapping
-    public List<ShelfDto> userShelfs(){
-        //restituisce tutti gli shelf di un utente
-        return null;
-    }*/
+    @GetMapping("detail/{id}")
+    public ShelfDto shelfDetail(@PathVariable int id) {
+        return shelfService.findShelfById(id);
+    }
 
-    @PostMapping("create")
-    public void createShelf(@RequestParam(value = "userId") int userId,
+    @PostMapping("create/")
+    public ShelfDto createShelf(@RequestParam(value = "userId") int userId,
                             @RequestParam(value = "shelfName") String shelfName) {
-        User user = userRepository.findById(userId);
-        Shelf shelf = new Shelf(shelfName, user);
-        shelfrepository.save(shelf);
+        return shelfService.createShelf(shelfName, userId);
     }
 
     @DeleteMapping("delete/{id}")
-    public void deleteShelf(@PathVariable int id) {
-        Shelf shelf = shelfrepository.findById(id);
-        shelfrepository.delete(shelf);
+    public ShelfDto deleteShelf(@PathVariable int id) {
+        return shelfService.deleteShelf(id);
     }
 
-    @PostMapping("add")
-    public void addToShelf(@RequestParam(value = "userId") int userId, 
+    @PutMapping("add/")
+    public String addToShelf(@RequestParam(value = "shelfId") int shelfId, 
                             @RequestParam(value = "perfumeId") int perfumeId) {
-        //elimina uno shelf associato ad userId
-        return;
+       return shelfService.addPerfumeToShelf(shelfId, perfumeId);
     }
 
-    @DeleteMapping("remove")
-    public void removeFromShelf(@RequestParam(value = "userId") int userId, 
+    @PutMapping("remove/")
+    public String removeFromShelf(@RequestParam(value = "shelfId") int shelfId, 
                             @RequestParam(value = "perfumeId") int perfumeId) {
-        //elimina uno shelf associato ad userId
-        return;
+       return shelfService.removeFromShelf(shelfId, perfumeId);
     }
 }
