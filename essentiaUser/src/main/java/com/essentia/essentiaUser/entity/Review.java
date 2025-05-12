@@ -29,6 +29,17 @@ public class Review {
 	private int sillage;
 	private int longevity;
 	
+	public Review() {}
+
+	public Review(Perfume perfume, User user, String title, String description, int vote, int seasonality, boolean gender, int sillage, int longevity) {
+		this.perfume = perfume;
+		this.user = user;
+		this.title = title;
+		this.description = description;
+		this.vote = vote;
+		this.seasonality = seasonality;
+	}
+
 	public int getId() {
 		return id;
 	}

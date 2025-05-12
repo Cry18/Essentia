@@ -7,6 +7,7 @@ import com.essentia.essentiauser.dto.ShelfDto;
 import com.essentia.essentiauser.entity.Perfume;
 import com.essentia.essentiauser.entity.Shelf;
 import com.essentia.essentiauser.entity.User;
+import com.essentia.essentiauser.exception.ForbiddenActionException;
 import com.essentia.essentiauser.exception.ResourceNotFoundException;
 import com.essentia.essentiauser.repository.PerfumeRepository;
 import com.essentia.essentiauser.repository.ShelfRepository;
@@ -36,51 +37,63 @@ public class ShelfServiceImpl implements ShelfService {
     }
 
     @Override
-    public ShelfDto deleteShelf(int id) {
+    public ShelfDto deleteShelf(int id, int userId) {
         Shelf shelf = shelfrepository.findById(id);
         if (shelf != null) {
+            if (shelf.getUser().getId() != userId) {
+                throw new ForbiddenActionException("This shelf does not belong to the user with id: " + userId);
+            } else {
             shelfrepository.delete(shelf);
             ShelfDto shelfDto = new ShelfDto(shelf.getName());
             shelfDto.setId(id);
-            return shelfDto;
+            return shelfDto;}
         }  else throw new ResourceNotFoundException("Shelf not found with id: " + id);
         }
 
     @Override
-    public String addPerfumeToShelf(int shelfId, int perfumeId) {
+    public String addPerfumeToShelf(int shelfId, int perfumeId, int userId) {
         Shelf shelf = shelfrepository.findById(shelfId);
         if (shelf != null) {
+            if (shelf.getUser().getId() != userId) {
+                throw new ForbiddenActionException("This shelf does not belong to the user with id: " + userId);
+            } else {
             Perfume perfume = perfumeRepository.findById(perfumeId);
             if (perfume == null) {
                 throw new ResourceNotFoundException("Perfume not found with id: " + perfumeId);}
             shelf.addPerfume(perfume);
             shelfrepository.save(shelf);
-            return perfume.getName() + " added to shelf " + shelf.getName();
+            return perfume.getName() + " added to shelf " + shelf.getName();}
         } else throw new ResourceNotFoundException("Shelf not found with id: " + shelfId);
     }
 
     @Override
-    public String removeFromShelf(int shelfId, int perfumeId) {
+    public String removeFromShelf(int shelfId, int perfumeId, int userId) {
         Shelf shelf = shelfrepository.findById(shelfId);
         if (shelf != null) {
+            if (shelf.getUser().getId() != userId) {
+                throw new ForbiddenActionException("This shelf does not belong to the user with id: " + userId);
+            } else {
             Perfume perfume = perfumeRepository.findById(perfumeId);
             if (perfume == null) {
                 throw new ResourceNotFoundException("Perfume not found with id: " + perfumeId);}
             if (shelf.removePerfume(perfume)){
                 shelfrepository.save(shelf);
-                return perfume.getName() + " removed from shelf " + shelf.getName();
+                return perfume.getName() + " removed from shelf " + shelf.getName();}
             } throw new ResourceNotFoundException("There is no perfume with id: " + perfumeId + ", in shelf: " + shelf.getName());
         } else throw new ResourceNotFoundException("Shelf not found with id: " + shelfId);
     }
 
     @Override
-    public ShelfDto findShelfById(int shelfId) {
+    public ShelfDto findShelfById(int shelfId, int userId) {
         Shelf shelf = shelfrepository.findByIdWithPerfumes(shelfId);
         if (shelf != null) {
+            if (shelf.getUser().getId() != userId) {
+                throw new ForbiddenActionException("This shelf does not belong to the user with id: " + userId);
+            } else {
             ShelfDto shelfDto = new ShelfDto(shelf.getName());
             shelfDto.setId(shelf.getId());
             shelfDto.setPerfumes(shelf.getPerfumes().stream().map(Perfume::getName).toList());
-            return shelfDto;
+            return shelfDto;}
         } else throw new ResourceNotFoundException("Shelf not found with id: " + shelfId);
     }
 }

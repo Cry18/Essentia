@@ -10,5 +10,6 @@ import com.essentia.essentiauser.entity.Review;
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
     List<Review> findByPerfumeId(int perfumeId);
     Review findById(int id);
+    Review findByUserId(int userId);
 
 }
