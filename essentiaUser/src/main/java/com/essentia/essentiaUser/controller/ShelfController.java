@@ -1,6 +1,8 @@
 package com.essentia.essentiauser.controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,8 @@ import com.essentia.essentiauser.service.impl.ShelfServiceImpl;
 @RequestMapping("/api/user/shelf/")
 public class ShelfController {
 
+    private static final Logger logger = LogManager.getLogger(ShelfController.class);
+
     @Autowired
     private ShelfServiceImpl shelfService;
 
@@ -24,18 +28,21 @@ public class ShelfController {
     @GetMapping("detail/")
     public ShelfDto shelfDetail(@RequestParam(value = "shelfId") int shelfId,
                             @RequestParam(value = "userId") int userId) {
+        logger.debug("GET /shelf/detail/ - shelfId: {} userId: {}", shelfId, userId);
         return shelfService.findShelfById(shelfId, userId);
     }
 
     @PostMapping("create/")
     public ShelfDto createShelf(@RequestParam(value = "userId") int userId,
                             @RequestParam(value = "shelfName") String shelfName) {
+        logger.debug("POST /shelf/create/ - userId: {} shelfName: {}", userId, shelfName);
         return shelfService.createShelf(shelfName, userId);
     }
 
     @DeleteMapping("delete/")
     public ShelfDto deleteShelf(@RequestParam(value = "shelfId") int shelfId,
                             @RequestParam(value = "userId") int userId) {
+        logger.debug("DELETE /shelf/delete/ - shelfId: {} userId: {}", shelfId, userId);
         return shelfService.deleteShelf(shelfId, userId);
     }
 
@@ -43,6 +50,7 @@ public class ShelfController {
     public String addToShelf(@RequestParam(value = "shelfId") int shelfId, 
                             @RequestParam(value = "perfumeId") int perfumeId,
                             @RequestParam(value = "userId") int userId) {
+        logger.debug("PUT /shelf/add/ - shelfId: {} perfumeId: {} userId: {}", shelfId, perfumeId, userId);
        return shelfService.addPerfumeToShelf(shelfId, perfumeId, userId);
     }
 
@@ -50,6 +58,7 @@ public class ShelfController {
     public String removeFromShelf(@RequestParam(value = "shelfId") int shelfId, 
                             @RequestParam(value = "perfumeId") int perfumeId,
                             @RequestParam(value = "userId") int userId) {
+        logger.debug("PUT /shelf/remove/ - shelfId: {} perfumeId: {} userId: {}", shelfId, perfumeId, userId);
        return shelfService.removeFromShelf(shelfId, perfumeId, userId);
     }
 }

@@ -1,13 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
-        <File name="File" fileName="logs/application.log">
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
+        </Console>
+        
+        <File name="EssentiaUserLog" fileName="logs/essentia-user.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
+        </File>
+
+        <File name="SystemLog" fileName="logs/system.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
         </File>
     </Appenders>
 
     <Loggers>
-        <Root level="debug">
-            <AppenderRef ref="File"/>
+        <Logger name="com.essentia.essentiauser" level="debug" additivity="false">
+            <AppenderRef ref="EssentiaUserLog"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="SystemLog"/>
+            <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
 </Configuration>
