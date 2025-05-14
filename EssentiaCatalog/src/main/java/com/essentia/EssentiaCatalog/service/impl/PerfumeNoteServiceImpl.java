@@ -61,7 +61,6 @@ public class PerfumeNoteServiceImpl implements PerfumeNoteService {
             p.setId(note.getId());
             perfumeNoteDtos.add(p);
         }
-        logger.info("Perfume note with id: {} found",note.getId());
         return perfumeNoteDtos;
     }
 }

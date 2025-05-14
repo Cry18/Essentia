@@ -59,7 +59,6 @@ public class BrandServiceImpl implements BrandService {
             b.setId(brand.getId());
             brandDtos.add(b);
         }
-        logger.info("Brand with id: {} found",brand.getId());
         return brandDtos;
 
     }

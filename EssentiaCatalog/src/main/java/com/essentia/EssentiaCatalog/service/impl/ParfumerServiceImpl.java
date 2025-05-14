@@ -61,7 +61,6 @@ public class ParfumerServiceImpl implements ParfumerService {
             p.setId(parfumer.getId());
             parfumerDtos.add(p);
         }
-        logger.info("Parfumer with id: {} found",parfumer.getId());
         return parfumerDtos;
     }
 }

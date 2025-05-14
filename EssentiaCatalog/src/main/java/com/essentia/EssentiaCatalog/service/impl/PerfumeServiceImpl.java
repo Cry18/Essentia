@@ -87,7 +87,6 @@ public class PerfumeServiceImpl implements PerfumeService {
             p.setId(perfume.getId());
             perfumeDtos.add(p);
         }
-        logger.info("Perfume with id: {} found",perfume.getId());
         return perfumeDtos;
     }
     
