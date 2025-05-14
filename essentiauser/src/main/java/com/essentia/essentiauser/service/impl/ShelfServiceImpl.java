@@ -19,7 +19,7 @@ import com.essentia.essentiauser.service.ShelfService;
 @Service
 public class ShelfServiceImpl implements ShelfService {
 
-    private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(ShelfServiceImpl.class);
 
     
     @Autowired
