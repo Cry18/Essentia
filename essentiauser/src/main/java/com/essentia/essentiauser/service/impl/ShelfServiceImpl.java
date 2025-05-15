@@ -34,7 +34,7 @@ public class ShelfServiceImpl implements ShelfService {
 
     @Override
     public ShelfDto createShelf(String name, int userId) {
-        if (name == null) {
+        if (name.isBlank()) {
             logger.warn("Trying to create a shelf with blank name");
             throw new NoNameShelfExcpetion("Impossible to create shelf with blank name");
         }
