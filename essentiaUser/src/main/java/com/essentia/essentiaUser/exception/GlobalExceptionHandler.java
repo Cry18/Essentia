@@ -93,4 +93,17 @@ public class GlobalExceptionHandler {
 		response.setMessage(e.getMessage());
 		return response;
     }
+
+	@ExceptionHandler(NoNameShelfExcpetion.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+    public ErrorResponse handleNoNameShelfExcpetion(Exception e) {
+		logger.info("Validation error on shelf name: {}", e.getMessage());
+		
+        ErrorResponse response = new ErrorResponse();
+		response.setTimestamp(LocalDateTime.now());
+		response.setError("Validation error on blank shelf name");
+		response.setMessage(e.getMessage());
+		return response;
+    }
 }

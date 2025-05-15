@@ -10,6 +10,7 @@ import com.essentia.essentiauser.entity.Perfume;
 import com.essentia.essentiauser.entity.Shelf;
 import com.essentia.essentiauser.entity.User;
 import com.essentia.essentiauser.exception.ForbiddenActionException;
+import com.essentia.essentiauser.exception.NoNameShelfExcpetion;
 import com.essentia.essentiauser.exception.ResourceNotFoundException;
 import com.essentia.essentiauser.repository.PerfumeRepository;
 import com.essentia.essentiauser.repository.ShelfRepository;
@@ -33,6 +34,10 @@ public class ShelfServiceImpl implements ShelfService {
 
     @Override
     public ShelfDto createShelf(String name, int userId) {
+        if (name == null) {
+            logger.warn("Trying to create a shelf with blank name");
+            throw new NoNameShelfExcpetion("Impossible to create shelf with blank name");
+        }
         logger.debug("Fetching user with id: {}", userId);
         User user = userRepository.findById(userId);
         if (user == null) {
