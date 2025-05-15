@@ -1,0 +1,12 @@
+2025-05-15 10:23:54 INFO  EssentiaAdministrationApplication:53 - Starting EssentiaAdministrationApplication using Java 17.0.12 with PID 11816 (C:\Users\ciervasi\Documents\GitHub\Essentia\essentiaadministration\target\classes started by ciervasi in C:\Users\ciervasi\Documents\GitHub\Essentia)
+2025-05-15 10:23:54 DEBUG EssentiaAdministrationApplication:54 - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-05-15 10:23:54 INFO  EssentiaAdministrationApplication:652 - No active profile set, falling back to 1 default profile: "default"
+2025-05-15 10:24:01 INFO  EssentiaAdministrationApplication:59 - Started EssentiaAdministrationApplication in 7.138 seconds (process running for 8.213)
+2025-05-15 10:24:24 DEBUG PerfumeController:32 - POST /add/perfume - perfume name: Prova 15/5
+2025-05-15 10:24:24 DEBUG PerfumeServiceImpl:55 - Fetching brand with id: 1
+2025-05-15 10:24:24 INFO  PerfumeServiceImpl:83 - New perfume with name: Prova 15/5 created
+2025-05-15 10:24:24 DEBUG PerfumeServiceImpl:86 - Adding perfume notes
+2025-05-15 10:24:25 INFO  PerfumeServiceImpl:99 - Notes for perfume with name: Prova 15/5, linked
+2025-05-15 10:25:13 DEBUG PerfumeController:44 - DELETE /delete/perfume/ - perfume id: 6
+2025-05-15 10:25:13 DEBUG PerfumeServiceImpl:165 - Fetching perfume with id: 6
+2025-05-15 10:25:13 INFO  PerfumeServiceImpl:169 - Perfume with id: 6 deleted

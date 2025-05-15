@@ -5,9 +5,13 @@
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
         </Console>
         
-        <File name="EssentiaUserLog" fileName="logs/essentia-user.log" append="true">
+        <RollingFile name="EssentiaUserLog" fileName="logs/essentia-user.log"
+             filePattern="logs/application-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>
-        </File>
+        <Policies>
+            <SizeBasedTriggerringPolicy size="10MB"/>
+        </Policies>
+        </RollingFile>
 
         <File name="SystemLog" fileName="logs/system.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %msg%n"/>

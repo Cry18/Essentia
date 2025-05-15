@@ -31,7 +31,7 @@ public class PerfumeNoteController {
         List<PerfumeNoteDto> perfumeNotes = perfumeNoteService.findLikeNamePerfumeNotes(name);
         if (perfumeNotes.isEmpty()) {
             logger.warn("No perfume notes found with the name: {}", name);
-            throw new ResourceNotFoundException("No perfume notes found with the name: " + name);
+            throw new ResourceNotFoundException("No perfume notes found");
         }
        return perfumeNotes;
    }

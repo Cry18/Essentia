@@ -31,7 +31,7 @@ public class ParfumerController {
         List<ParfumerDto> parfumers = parfumerService.findLikeNameParfumers(name);
         if (parfumers.isEmpty()) {
             logger.warn("No parfumers found with the name: {}", name);
-            throw new ResourceNotFoundException("No parfumers found with the name: " + name);
+            throw new ResourceNotFoundException("No parfumers found");
         }
         return parfumers;
    }

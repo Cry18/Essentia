@@ -1,0 +1,17 @@
+2025-05-15 09:51:53 INFO  EssentiaCatalogApplication:53 - Starting EssentiaCatalogApplication using Java 17.0.12 with PID 21676 (C:\Users\ciervasi\Documents\GitHub\Essentia\essentiacatalog\target\classes started by ciervasi in C:\Users\ciervasi\Documents\GitHub\Essentia\essentiacatalog)
+2025-05-15 09:51:53 DEBUG EssentiaCatalogApplication:54 - Running with Spring Boot v3.4.5, Spring v6.2.6
+2025-05-15 09:51:53 INFO  EssentiaCatalogApplication:652 - No active profile set, falling back to 1 default profile: "default"
+2025-05-15 09:51:57 INFO  EssentiaCatalogApplication:59 - Started EssentiaCatalogApplication in 4.515 seconds (process running for 5.069)
+2025-05-15 09:52:07 DEBUG BrandController:30 - GET /brands/ - name: 
+2025-05-15 09:52:07 DEBUG BrandServiceImpl:40 - Fetching all brands
+2025-05-15 09:52:07 INFO  BrandServiceImpl:48 - Brands found
+2025-05-15 09:52:55 DEBUG BrandController:30 - GET /brands/ - name: prova
+2025-05-15 09:52:55 DEBUG BrandServiceImpl:54 - Fetching brands with: prova in name
+2025-05-15 09:54:08 DEBUG BrandController:30 - GET /brands/ - name: prova
+2025-05-15 09:54:08 DEBUG BrandServiceImpl:54 - Fetching brands with: prova in name
+2025-05-15 09:54:09 DEBUG BrandController:30 - GET /brands/ - name: prova
+2025-05-15 09:54:09 DEBUG BrandServiceImpl:54 - Fetching brands with: prova in name
+2025-05-15 09:54:57 DEBUG BrandController:30 - GET /brands/ - name: prova555
+2025-05-15 09:54:57 DEBUG BrandServiceImpl:54 - Fetching brands with: prova555 in name
+2025-05-15 09:54:57 WARN  BrandController:34 - No brands found with the name: prova555
+2025-05-15 09:54:57 WARN  GlobalExceptionHandler:23 - Resource not found: No brands found with the name: prova555

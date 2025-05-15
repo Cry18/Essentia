@@ -32,7 +32,7 @@ public class BrandController {
         List<BrandDto> brands = brandService.findLikeNameBrands(name);
         if (brands.isEmpty()) {
             logger.warn("No brands found with the name: {}", name);
-            throw new ResourceNotFoundException("No brands found with the name: " + name);
+            throw new ResourceNotFoundException("No brands found");
         }
         return brands;
     }
