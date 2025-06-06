@@ -43,4 +43,16 @@ public class BrandController {
         return brandService.details(id);
     }
 
+    @GetMapping("brand/procedure")
+     public String brandProcedure() {
+        logger.debug("GET /brand/procedure");
+        return brandService.brandProcedure("Mario", 52);
+    }
+
+    @GetMapping("brand/procedure/{name}")
+     public List<BrandDto> searchBrandWithProcedure(@PathVariable String name) {
+        logger.debug("GET /brand/procedure/{} - name: {}", name);
+        return brandService.searchBrandWithProcedure(name);
+    }
+
 }

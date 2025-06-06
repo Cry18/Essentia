@@ -1,11 +1,19 @@
 package com.essentia.essentiacatalog.service.impl;
 
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlInOutParameter;
+import org.springframework.jdbc.core.SqlOutParameter;
+import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Service;
 
 import com.essentia.essentiacatalog.dto.BrandDto;
@@ -20,6 +28,9 @@ public class BrandServiceImpl implements BrandService {
 
     @Autowired
     private BrandRepository brandRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public BrandDto details(int id) {
@@ -61,5 +72,47 @@ public class BrandServiceImpl implements BrandService {
         }
         return brandDtos;
 
+    }
+
+    @Override
+    public String brandProcedure(String nome, int accessiIniziali) {
+
+        SimpleJdbcCall jdbcCall = new SimpleJdbcCall(jdbcTemplate)
+                .withProcedureName("prova_procedura")
+                .declareParameters(
+                        new SqlParameter("nome", Types.VARCHAR),
+                        new SqlInOutParameter("accessi", Types.INTEGER),
+                        new SqlOutParameter("messaggio_saluto", Types.VARCHAR)
+                );
+        
+        MapSqlParameterSource parameters = new MapSqlParameterSource()
+                .addValue("nome", nome)
+                .addValue("accessi", accessiIniziali);
+
+        Map<String, Object> result = jdbcCall.execute(parameters);
+        
+        return (String) result.get("messaggio_saluto");
+    }
+
+    @Override
+    public List<BrandDto> searchBrandWithProcedure(String name){
+
+        SimpleJdbcCall jdbcCall = new SimpleJdbcCall(jdbcTemplate)
+                .withProcedureName("cerca_brand")
+                .returningResultSet("brands", (rs, rowNum) -> {
+                    BrandDto brand = new BrandDto();
+                    brand.setId(rs.getInt("id"));
+                    brand.setName(rs.getString("name"));
+                    brand.setDescription(rs.getString("description"));
+                    return brand;
+                });
+
+        MapSqlParameterSource params = new MapSqlParameterSource()
+                .addValue("nome_parziale", name);
+
+        Map<String, Object> result = jdbcCall.execute(params);
+
+        List<BrandDto> brands = (List<BrandDto>) result.get("brands");
+        return brands;
     }
 }
