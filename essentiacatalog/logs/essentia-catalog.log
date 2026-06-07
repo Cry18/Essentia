@@ -15,3 +15,26 @@
 2025-05-15 09:54:57 DEBUG BrandServiceImpl:54 - Fetching brands with: prova555 in name
 2025-05-15 09:54:57 WARN  BrandController:34 - No brands found with the name: prova555
 2025-05-15 09:54:57 WARN  GlobalExceptionHandler:23 - Resource not found: No brands found with the name: prova555
+2026-06-05 21:50:01 INFO  EssentiaCatalogApplication:53 - Starting EssentiaCatalogApplication using Java 23.0.1 with PID 275920 (C:\Users\Chris\Documents\GitHub\Essentia\essentiacatalog\target\classes started by Chris in C:\Users\Chris\Documents\GitHub\Essentia\essentiacatalog)
+2026-06-05 21:50:01 DEBUG EssentiaCatalogApplication:54 - Running with Spring Boot v3.4.5, Spring v6.2.6
+2026-06-05 21:50:01 INFO  EssentiaCatalogApplication:652 - No active profile set, falling back to 1 default profile: "default"
+2026-06-05 21:50:02 DEBUG JwtFilter:240 - Filter 'jwtFilter' configured for use
+2026-06-05 21:53:06 INFO  EssentiaCatalogApplication:53 - Starting EssentiaCatalogApplication using Java 23.0.1 with PID 275892 (C:\Users\Chris\Documents\GitHub\Essentia\essentiacatalog\target\classes started by Chris in C:\Users\Chris\Documents\GitHub\Essentia\essentiacatalog)
+2026-06-05 21:53:06 DEBUG EssentiaCatalogApplication:54 - Running with Spring Boot v3.4.5, Spring v6.2.6
+2026-06-05 21:53:06 INFO  EssentiaCatalogApplication:652 - No active profile set, falling back to 1 default profile: "default"
+2026-06-05 21:53:07 DEBUG JwtFilter:240 - Filter 'jwtFilter' configured for use
+2026-06-05 21:53:09 INFO  EssentiaCatalogApplication:59 - Started EssentiaCatalogApplication in 3.46 seconds (process running for 3.956)
+2026-06-05 21:53:18 DEBUG PerfumeController:34 - GET /perfumes - name: , parfumer: , brand: , note: 
+2026-06-05 21:53:18 DEBUG PerfumeServiceImpl:68 - Fetching all perfumes
+2026-06-05 21:53:19 INFO  PerfumeServiceImpl:76 - Perfumes found
+2026-06-05 21:53:39 DEBUG PerfumeNoteController:29 - GET /perfumenotes/ - name:      
+2026-06-05 21:53:39 DEBUG PerfumeNoteServiceImpl:41 - Fetching all perfume notes
+2026-06-05 21:53:39 INFO  PerfumeNoteServiceImpl:50 - Perfume notes found
+2026-06-05 21:53:46 DEBUG PerfumeNoteController:29 - GET /perfumenotes/ - name: 
+2026-06-05 21:53:46 DEBUG PerfumeNoteServiceImpl:41 - Fetching all perfume notes
+2026-06-05 21:53:46 INFO  PerfumeNoteServiceImpl:50 - Perfume notes found
+2026-06-05 21:53:49 DEBUG PerfumeNoteController:29 - GET /perfumenotes/ - name: B
+2026-06-05 21:53:49 DEBUG PerfumeNoteServiceImpl:56 - Fetching perfume note with: B in name
+2026-06-05 21:53:53 DEBUG PerfumeNoteController:29 - GET /perfumenotes/ - name: 
+2026-06-05 21:53:53 DEBUG PerfumeNoteServiceImpl:41 - Fetching all perfume notes
+2026-06-05 21:53:53 INFO  PerfumeNoteServiceImpl:50 - Perfume notes found

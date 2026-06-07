@@ -1,0 +1,79 @@
+.catalog__hero {
+  position: relative;
+  height: 340px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: var(--space-10);
+  overflow: hidden;
+  margin-top: -80px;
+}
+.catalog__hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('/assets/images/hero-catalog.jpg');
+  background-size: cover;
+  background-position: center 40%;
+}
+.catalog__hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(9,8,10,0.90) 0%, rgba(9,8,10,0.30) 100%);
+}
+.catalog__hero-content {
+  position: relative; z-index: 1;
+  padding: 0 var(--space-8);
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.catalog__hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--text-4xl);
+  letter-spacing: 0.1em;
+}
+
+.catalog__filters {
+  margin: var(--space-10) 0 var(--space-8);
+  padding: var(--space-8);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+}
+.catalog__filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8) var(--space-6);
+  margin-bottom: var(--space-6);
+}
+@media (max-width: 900px)  { .catalog__filter-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px)  { .catalog__filter-grid { grid-template-columns: 1fr; } }
+
+.catalog__filter-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-divider);
+}
+
+.catalog__count {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+.catalog__error {
+  color: var(--color-error);
+  text-align: center;
+  padding: var(--space-10) 0;
+}
+.catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+@media (max-width: 1100px) { .catalog__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .catalog__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .catalog__grid { grid-template-columns: 1fr; } }

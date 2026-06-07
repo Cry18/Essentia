@@ -2,6 +2,7 @@ package com.essentia.essentiauser.dto;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -9,8 +10,10 @@ public class ReviewDto {
     
     private int id;
     @Size(max = 20, message = "il titolo della recensione può contenere al massimo 20 caratteri")
+    @NotBlank(message = "Inserire un titolo per la recensione")
     private String title;
     @Size(max = 150, message = "la descrizione della recensione può contenere al massimo 150 caratteri")
+	@NotBlank(message = "Inserire una descrizione per la recensione")
 	private String description;
     @NotNull(message = "Inserire il voto, compreso tra 1 e 5")
     @Min(value = 1, message = "Il voto deve essere compreso tra 1 e 5")	

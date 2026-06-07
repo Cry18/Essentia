@@ -1,0 +1,197 @@
+.detail__header {
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-divider);
+  padding: var(--space-10) 0 0;
+  overflow: hidden;
+}
+
+/* ── Layout 2 colonne: testo sinistra, bottiglia destra ── */
+.detail__header-inner {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--space-10);
+  align-items: center;
+}
+.detail__header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-bottom: var(--space-10);
+}
+
+/* ── Immagine profumo — blend con sfondo ── */
+.detail__img-wrap {
+  position: relative;
+  width: 360px;
+  height: 440px;
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+.detail__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+/* Fade laterale sinistra: l'immagine si fonde con lo sfondo */
+.detail__img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(to right, var(--color-bg-surface), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+/* Fade inferiore: la bottiglia sembra posarsi sullo sfondo */
+.detail__img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 20%;
+  background: linear-gradient(to bottom, transparent, var(--color-bg-surface));
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .detail__header-inner {
+    grid-template-columns: 1fr;
+  }
+  .detail__header-text { padding-bottom: 0; }
+  .detail__img-wrap {
+    width: 220px;
+    height: 260px;
+    margin: var(--space-6) auto 0;
+    align-self: center;
+  }
+  .detail__img-wrap::before { display: none; }
+}
+.detail__title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6vw, var(--text-4xl));
+  letter-spacing: 0.06em;
+}
+.detail__parfumers {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+.detail__brand-link {
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-luxury);
+}
+.detail__brand-link:hover { color: var(--color-gold); }
+.detail__parfumer-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-style: italic;
+  transition: color var(--duration-fast) var(--ease-luxury);
+}
+.detail__parfumer-link:hover { color: var(--color-gold); }
+.detail__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-2); }
+.detail__flash {
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  letter-spacing: 0.06em;
+  animation: fadeIn 300ms ease both;
+}
+
+.detail__body { padding: var(--section-pad-y) 0 var(--space-12); }
+
+.detail__section { margin-bottom: var(--space-10); }
+.detail__section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-divider);
+}
+.detail__description {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  max-width: var(--max-width-narrow);
+}
+
+/* Piramide */
+.pyramid { display: flex; flex-direction: column; gap: var(--space-6); }
+.pyramid__row { display: flex; align-items: flex-start; gap: var(--space-6); }
+.pyramid__label { width: 70px; flex-shrink: 0; margin-top: 5px; }
+.pyramid__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* Recensioni */
+.detail__review-btn { margin-bottom: var(--space-8); }
+.reviews { display: flex; flex-direction: column; gap: var(--space-6); margin-top: var(--space-8); }
+.review {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-6);
+  transition: border-color var(--duration-base) var(--ease-luxury);
+}
+.review:hover { border-color: var(--color-border-hover); }
+.review__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+.review__user { font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-secondary); }
+.review__vote { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-gold); }
+.review__title { font-family: var(--font-heading); font-size: var(--text-md); margin-bottom: var(--space-3); }
+.review__body  { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-4); }
+.review__meta  { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* Form recensione */
+.review-form { background: var(--color-bg-surface); border: 1px solid var(--color-border); padding: var(--space-8); margin-bottom: var(--space-8); }
+.review-form--edit { border-color: var(--color-border-hover); }
+.review-form__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); margin-bottom: var(--space-6); }
+@media (max-width: 600px) { .review-form__grid { grid-template-columns: 1fr; } }
+.review-form__textarea { resize: vertical; min-height: 100px; border: 1px solid var(--color-border); padding: var(--space-3); background: var(--color-bg-elevated); }
+.review-form__select   { border: none; border-bottom: 1px solid var(--color-border); background: transparent; color: var(--color-text-primary); font-family: var(--font-body); font-size: var(--text-base); font-weight: 300; padding: 12px 0; outline: none; }
+.review-form__select:focus { border-bottom-color: var(--color-gold); }
+
+/* ── Scaffale picker ── */
+.detail__shelf-picker {
+  margin-top: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+.detail__shelf-picker__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.detail__shelf-picker__inner .input-field {
+  max-width: 240px;
+  margin-bottom: 0;
+}
+
+/* ── Indicatore recensione propria ── */
+.review--own {
+  border-color: var(--color-border-hover);
+}
+.review__badge {
+  display: inline-block;
+  margin-left: var(--space-2);
+  padding: 1px 8px;
+  background: var(--color-gold);
+  color: var(--color-text-inverse);
+  font-size: 9px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+.review__actions {
+  display: flex;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+.review__delete-btn { color: var(--color-error) !important; }
+.review__delete-btn::after { background: var(--color-error) !important; }

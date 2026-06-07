@@ -4,13 +4,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.essentia.essentiauser.dto.PerfumeSummaryDto;
 import com.essentia.essentiauser.dto.ShelfDto;
 import com.essentia.essentiauser.entity.Perfume;
 import com.essentia.essentiauser.entity.Shelf;
 import com.essentia.essentiauser.entity.User;
 import com.essentia.essentiauser.exception.ForbiddenActionException;
-import com.essentia.essentiauser.exception.NoNameShelfExcpetion;
+import com.essentia.essentiauser.exception.NoNameShelfException;
 import com.essentia.essentiauser.exception.ResourceNotFoundException;
 import com.essentia.essentiauser.repository.PerfumeRepository;
 import com.essentia.essentiauser.repository.ShelfRepository;
@@ -18,6 +20,7 @@ import com.essentia.essentiauser.repository.UserRepository;
 import com.essentia.essentiauser.service.ShelfService;
 
 @Service
+@Transactional
 public class ShelfServiceImpl implements ShelfService {
 
     private static final Logger logger = LogManager.getLogger(ShelfServiceImpl.class);
@@ -36,7 +39,7 @@ public class ShelfServiceImpl implements ShelfService {
     public ShelfDto createShelf(String name, int userId) {
         if (name.isBlank()) {
             logger.warn("Trying to create a shelf with blank name");
-            throw new NoNameShelfExcpetion("Impossible to create shelf with blank name");
+            throw new NoNameShelfException("Impossible to create shelf with blank name");
         }
         logger.debug("Fetching user with id: {}", userId);
         User user = userRepository.findById(userId);
@@ -130,7 +133,11 @@ public class ShelfServiceImpl implements ShelfService {
             } else {
             ShelfDto shelfDto = new ShelfDto(shelf.getName());
             shelfDto.setId(shelf.getId());
-            shelfDto.setPerfumes(shelf.getPerfumes().stream().map(Perfume::getName).toList());
+            shelfDto.setPerfumes(shelf.getPerfumes().stream()
+                    .map(p -> new PerfumeSummaryDto(p.getId(), p.getName(),
+                            p.getBrand() != null ? p.getBrand().getName() : null,
+                            p.getImageUrl()))
+                    .toList());
             logger.info("Shelf with id: {} found", shelfId);
             return shelfDto;}
         } else {

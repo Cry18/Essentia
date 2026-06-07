@@ -37,3 +37,124 @@
 2025-05-15 09:59:03 INFO  LocalContainerEntityManagerFactoryBean:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-05-15 09:59:03 INFO  HikariDataSource:349 - HikariPool-1 - Shutdown initiated...
 2025-05-15 09:59:03 INFO  HikariDataSource:351 - HikariPool-1 - Shutdown completed.
+2026-06-05 21:49:49 INFO  AnnotationConfigContextLoaderUtils:83 - Could not detect default configuration classes for test class [com.essentia.essentiaCatalog.EssentiaCatalogApplicationTests]: EssentiaCatalogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-05 21:49:49 INFO  SpringBootTestContextBootstrapper:234 - Found @SpringBootConfiguration com.essentia.essentiacatalog.EssentiaCatalogApplication for test class com.essentia.essentiaCatalog.EssentiaCatalogApplicationTests
+2026-06-05 21:49:49 INFO  Version:21 - HV000001: Hibernate Validator 8.0.2.Final
+2026-06-05 21:49:49 INFO  EssentiaCatalogApplicationTests:53 - Starting EssentiaCatalogApplicationTests using Java 23.0.1 with PID 273420 (started by Chris in C:\Users\Chris\Documents\GitHub\Essentia\essentiacatalog)
+2026-06-05 21:49:49 INFO  EssentiaCatalogApplicationTests:652 - No active profile set, falling back to 1 default profile: "default"
+2026-06-05 21:49:49 INFO  RepositoryConfigurationDelegate:143 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-05 21:49:50 INFO  RepositoryConfigurationDelegate:211 - Finished Spring Data repository scanning in 45 ms. Found 6 JPA repository interfaces.
+2026-06-05 21:49:50 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-05 21:49:50 INFO  Version:44 - HHH000412: Hibernate ORM core version 6.6.13.Final
+2026-06-05 21:49:50 INFO  RegionFactoryInitiator:50 - HHH000026: Second-level cache disabled
+2026-06-05 21:49:50 INFO  SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-05 21:49:50 INFO  HikariDataSource:109 - HikariPool-1 - Starting...
+2026-06-05 21:49:51 INFO  HikariPool:554 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c3679e5
+2026-06-05 21:49:51 INFO  HikariDataSource:122 - HikariPool-1 - Start completed.
+2026-06-05 21:49:51 WARN  deprecation:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-05 21:49:51 INFO  pooling:157 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-05 21:49:51 INFO  JtaPlatformInitiator:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-05 21:49:51 INFO  LocalContainerEntityManagerFactoryBean:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-05 21:49:52 INFO  QueryEnhancerFactory:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-05 21:49:52 WARN  JpaBaseConfiguration$JpaWebConfiguration:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-05 21:49:53 INFO  EssentiaCatalogApplicationTests:59 - Started EssentiaCatalogApplicationTests in 4.022 seconds (process running for 4.972)
+2026-06-05 21:49:53 INFO  LocalContainerEntityManagerFactoryBean:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-05 21:49:53 INFO  HikariDataSource:349 - HikariPool-1 - Shutdown initiated...
+2026-06-05 21:49:53 INFO  HikariDataSource:351 - HikariPool-1 - Shutdown completed.
+2026-06-05 21:50:01 INFO  Version:21 - HV000001: Hibernate Validator 8.0.2.Final
+2026-06-05 21:50:01 INFO  RepositoryConfigurationDelegate:143 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-05 21:50:01 INFO  RepositoryConfigurationDelegate:211 - Finished Spring Data repository scanning in 38 ms. Found 6 JPA repository interfaces.
+2026-06-05 21:50:01 INFO  TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+2026-06-05 21:50:01 INFO  Http11NioProtocol:168 - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-05 21:50:01 INFO  StandardService:168 - Starting service [Tomcat]
+2026-06-05 21:50:01 INFO  StandardEngine:168 - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2026-06-05 21:50:01 INFO  [/]:168 - Initializing Spring embedded WebApplicationContext
+2026-06-05 21:50:01 INFO  ServletWebServerApplicationContext:301 - Root WebApplicationContext: initialization completed in 731 ms
+2026-06-05 21:50:02 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-05 21:50:02 INFO  Version:44 - HHH000412: Hibernate ORM core version 6.6.13.Final
+2026-06-05 21:50:02 INFO  RegionFactoryInitiator:50 - HHH000026: Second-level cache disabled
+2026-06-05 21:50:02 INFO  SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-05 21:50:02 INFO  HikariDataSource:109 - HikariPool-1 - Starting...
+2026-06-05 21:50:02 INFO  HikariPool:554 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5876bed9
+2026-06-05 21:50:02 INFO  HikariDataSource:122 - HikariPool-1 - Start completed.
+2026-06-05 21:50:02 WARN  deprecation:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-05 21:50:02 INFO  pooling:157 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-05 21:50:03 INFO  JtaPlatformInitiator:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-05 21:50:03 INFO  LocalContainerEntityManagerFactoryBean:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-05 21:50:03 INFO  QueryEnhancerFactory:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-05 21:50:04 WARN  JpaBaseConfiguration$JpaWebConfiguration:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-05 21:50:04 INFO  Http11NioProtocol:168 - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-05 21:50:04 WARN  AnnotationConfigServletWebServerApplicationContext:635 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-06-05 21:50:04 INFO  LocalContainerEntityManagerFactoryBean:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-05 21:50:04 INFO  HikariDataSource:349 - HikariPool-1 - Shutdown initiated...
+2026-06-05 21:50:04 INFO  HikariDataSource:351 - HikariPool-1 - Shutdown completed.
+2026-06-05 21:50:04 INFO  ConditionEvaluationReportLogger:82 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-05 21:50:04 ERROR LoggingFailureAnalysisReporter:40 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2026-06-05 21:53:06 INFO  Version:21 - HV000001: Hibernate Validator 8.0.2.Final
+2026-06-05 21:53:06 INFO  RepositoryConfigurationDelegate:143 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-05 21:53:06 INFO  RepositoryConfigurationDelegate:211 - Finished Spring Data repository scanning in 45 ms. Found 6 JPA repository interfaces.
+2026-06-05 21:53:07 INFO  TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+2026-06-05 21:53:07 INFO  Http11NioProtocol:168 - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-05 21:53:07 INFO  StandardService:168 - Starting service [Tomcat]
+2026-06-05 21:53:07 INFO  StandardEngine:168 - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2026-06-05 21:53:07 INFO  [/]:168 - Initializing Spring embedded WebApplicationContext
+2026-06-05 21:53:07 INFO  ServletWebServerApplicationContext:301 - Root WebApplicationContext: initialization completed in 814 ms
+2026-06-05 21:53:07 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-05 21:53:07 INFO  Version:44 - HHH000412: Hibernate ORM core version 6.6.13.Final
+2026-06-05 21:53:07 INFO  RegionFactoryInitiator:50 - HHH000026: Second-level cache disabled
+2026-06-05 21:53:07 INFO  SpringPersistenceUnitInfo:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-05 21:53:07 INFO  HikariDataSource:109 - HikariPool-1 - Starting...
+2026-06-05 21:53:07 INFO  HikariPool:554 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73ddb7ef
+2026-06-05 21:53:07 INFO  HikariDataSource:122 - HikariPool-1 - Start completed.
+2026-06-05 21:53:07 WARN  deprecation:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-05 21:53:07 INFO  pooling:157 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-05 21:53:08 INFO  JtaPlatformInitiator:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-05 21:53:08 INFO  LocalContainerEntityManagerFactoryBean:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-05 21:53:08 INFO  QueryEnhancerFactory:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-05 21:53:09 WARN  JpaBaseConfiguration$JpaWebConfiguration:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-05 21:53:09 INFO  Http11NioProtocol:168 - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-05 21:53:09 INFO  TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+2026-06-05 21:53:18 INFO  [/]:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-05 21:53:18 INFO  DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+2026-06-05 21:53:18 INFO  DispatcherServlet:554 - Completed initialization in 1 ms
+2026-06-05 21:54:02 INFO  GracefulShutdown:54 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-05 21:54:02 INFO  GracefulShutdown:76 - Graceful shutdown complete
+2026-06-05 21:54:02 INFO  LocalContainerEntityManagerFactoryBean:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-05 21:54:02 INFO  HikariDataSource:349 - HikariPool-1 - Shutdown initiated...
+2026-06-05 21:54:02 INFO  HikariDataSource:351 - HikariPool-1 - Shutdown completed.

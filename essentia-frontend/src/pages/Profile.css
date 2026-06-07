@@ -1,0 +1,197 @@
+.profile__header {
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-divider);
+  padding: var(--space-12) 0;
+}
+.profile__header .container { display: flex; flex-direction: column; gap: var(--space-3); }
+
+/* ── Avatar ── */
+.profile__header-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+.profile__avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+.profile__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border-hover);
+  display: block;
+}
+.profile__avatar--initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-hover);
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-gold);
+  letter-spacing: 0.08em;
+}
+.profile__avatar-upload {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-luxury);
+}
+.profile__avatar-upload:hover { color: var(--color-gold); }
+.profile__title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--text-4xl);
+  letter-spacing: 0.1em;
+}
+.profile__role {
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.profile__body { padding: var(--space-12) 0; }
+.profile__section { margin-bottom: var(--space-10); }
+.profile__section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-divider);
+}
+.profile__msg {
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  margin-bottom: var(--space-4);
+  animation: fadeIn 300ms ease both;
+}
+.profile__new-shelf {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-5);
+  max-width: 540px;
+  margin-bottom: var(--space-8);
+}
+.profile__shelves { display: flex; flex-direction: column; gap: var(--space-3); }
+.shelf-item {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  transition: border-color var(--duration-base) var(--ease-luxury);
+}
+.shelf-item:hover { border-color: var(--color-border-hover); }
+.shelf-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+}
+.shelf-item__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+}
+.shelf-item__actions { display: flex; gap: var(--space-5); }
+.shelf-item__delete { color: var(--color-error) !important; }
+.shelf-item__delete::after { background: var(--color-error) !important; }
+.shelf-item__contents {
+  border-top: 1px solid var(--color-divider);
+  padding: var(--space-5);
+}
+.shelf-item__list { display: flex; flex-direction: column; gap: var(--space-2); }
+.shelf-item__perfume {
+  border-bottom: 1px solid var(--color-divider);
+}
+.shelf-item__perfume:last-child { border-bottom: none; }
+
+.shelf-item__perfume-link {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-1);
+  text-decoration: none;
+  transition: background var(--duration-fast) var(--ease-luxury);
+  border-radius: 2px;
+}
+.shelf-item__perfume-link:hover {
+  background: var(--color-bg-elevated);
+}
+.shelf-item__perfume-link:hover .shelf-item__perfume-name {
+  color: var(--color-gold);
+}
+.shelf-item__perfume-brand {
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+.shelf-item__perfume-name {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--ease-luxury);
+}
+.shelf-item__empty { font-size: var(--text-sm); color: var(--color-text-muted); font-style: italic; }
+
+.profile__account-info { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-6); }
+.profile__account-info p { display: flex; flex-direction: column; gap: var(--space-1); font-size: var(--text-base); }
+.profile__account-info span { display: block; margin-bottom: var(--space-1); }
+.profile__logout { margin-top: var(--space-4); }
+
+/* ── Signature ── */
+.profile__signature {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border-hover);
+  background: var(--color-bg-surface);
+  text-decoration: none;
+  transition: border-color var(--duration-base) var(--ease-luxury),
+              background var(--duration-base) var(--ease-luxury);
+}
+.profile__signature:hover { border-color: var(--color-gold); background: var(--color-bg-elevated); }
+.profile__signature-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+.profile__signature-arrow {
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  margin-top: var(--space-1);
+}
+
+/* ── Preferiti ── */
+.profile__favorites {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+.profile__fav-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+  text-decoration: none;
+  transition: border-color var(--duration-base) var(--ease-luxury);
+}
+.profile__fav-item:hover { border-color: var(--color-border-hover); }
+.profile__fav-brand { font-size: var(--text-xs); margin-bottom: var(--space-1); }
+.profile__fav-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}

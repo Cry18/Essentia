@@ -1,0 +1,153 @@
+version: '3.8'
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  Essentia — Docker Compose
+#
+#  Full startup:
+#    docker compose up --build
+#
+#  MySQL only (useful for local development):
+#    docker compose up mysql
+#
+#  Host ports:
+#    MySQL              → localhost:3307  (3307 to avoid conflict with local MySQL)
+#    essentia-admin     → localhost:8080
+#    essentia-catalog   → localhost:8082
+#    essentia-user      → localhost:8081
+#
+#  DB credentials (for local use only, not production):
+#    database : essentia
+#    user     : essentia
+#    password : essentia_pass
+#
+#  Schema migrations:
+#    After a schema change apply docs/migrations/V2_schema_cleanup.sql.
+#    Easiest reset: docker compose down -v && docker compose up --build
+#    Keep data:     docker exec -i essentia-mysql mysql -u essentia -pessentia_pass essentia < docs/migrations/V2_schema_cleanup.sql
+#
+#  Customizable JWT secret: copy .env.example to .env and set JWT_SECRET
+# ══════════════════════════════════════════════════════════════════════════════
+
+services:
+
+  # ── MySQL ───────────────────────────────────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    container_name: essentia-mysql
+    environment:
+      MYSQL_DATABASE: essentia
+      MYSQL_USER: essentia
+      MYSQL_PASSWORD: essentia_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - essentia-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_pass"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+
+  # ── Administration ──────────────────────────────────────────────────────────
+  essentia-admin:
+    build:
+      context: .
+      dockerfile: essentiaadministration/Dockerfile
+    container_name: essentia-admin
+    ports:
+      - "8080:8080"
+    environment:
+      # Database — points to the MySQL container, not localhost
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/essentia?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: essentia
+      SPRING_DATASOURCE_PASSWORD: essentia_pass
+      # Schema: update = Hibernate creates/updates tables if they don't exist
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "false"
+      # JWT — must match the secret used in all other modules
+      JWT_SECRET: ${JWT_SECRET:-essentiaSecretKeyForDevelopmentOnlyDoNotUseInProd}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-86400000}
+      # Upload directory — shared volume for entity images
+      UPLOAD_DIR: /uploads
+    volumes:
+      - essentia-uploads:/uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: on-failure
+
+  # ── Catalog ─────────────────────────────────────────────────────────────────
+  essentia-catalog:
+    build:
+      context: .
+      dockerfile: essentiacatalog/Dockerfile
+    container_name: essentia-catalog
+    ports:
+      - "8082:8082"
+    environment:
+      SERVER_PORT: 8082
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/essentia?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: essentia
+      SPRING_DATASOURCE_PASSWORD: essentia_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "false"
+      JWT_SECRET: ${JWT_SECRET:-essentiaSecretKeyForDevelopmentOnlyDoNotUseInProd}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-86400000}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: on-failure
+
+  # ── User ────────────────────────────────────────────────────────────────────
+  essentia-user:
+    build:
+      context: .
+      dockerfile: essentiauser/Dockerfile
+    container_name: essentia-user
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/essentia?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: essentia
+      SPRING_DATASOURCE_PASSWORD: essentia_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "false"
+      JWT_SECRET: ${JWT_SECRET:-essentiaSecretKeyForDevelopmentOnlyDoNotUseInProd}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-86400000}
+      # Enables DataSeeder — populates the DB on first startup if empty
+      # For a full reset: docker compose down -v && docker compose up
+      APP_SEED_DATA: "true"
+      # Upload directory — shared volume for profile photos
+      UPLOAD_DIR: /uploads
+    volumes:
+      - essentia-uploads:/uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: on-failure
+
+  # ── Frontend ────────────────────────────────────────────────────────────────
+  essentia-frontend:
+    build:
+      context: .
+      dockerfile: essentia-frontend/Dockerfile
+    container_name: essentia-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - essentia-admin
+      - essentia-catalog
+      - essentia-user
+    restart: unless-stopped
+
+# ── Volumes ──────────────────────────────────────────────────────────────────
+volumes:
+  essentia-mysql-data:
+    driver: local
+  # Shared volume per immagini caricate (entity images + foto profilo)
+  # Admin scrive in /api/admin/uploads/, user scrive in /api/user/uploads/
+  essentia-uploads:
+    driver: local
