@@ -104,3 +104,10 @@ This is a small personal project, so there's no formal roadmap — but if you ru
 - **Submit a pull request** if you've already found and fixed the issue
 
 No contribution is too small. If something feels broken or off, chances are it is — feel free to flag it.
+
+## Screenshots
+
+![Home](docs/screenshots/screenshot_home.png)
+![Catalog](docs/screenshots/screenshot_catalog.png)
+![Fragrance Detail](docs/screenshots/screenshot_detail.png)
+![User Profile](docs/screenshots/screenshot_profile.png)
