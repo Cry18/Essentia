@@ -3,7 +3,15 @@
 A web application inspired by [Fragrantica](https://www.fragrantica.com/) — the go-to reference site for perfume lovers. Essentia lets you browse a curated catalog of fragrances, discover the perfumers behind them, explore their olfactory profiles, and build your own personal collection.
 
 ---
+## Tech Stack
 
+**Backend** · Java 17 · Spring Boot · Spring Security · JPA / Hibernate · Apache Maven  
+**Database** · MySQL  
+**Testing** · JUnit · Mockito · Postman  
+**DevOps** · Docker · Docker Compose  
+**Frontend** · React 18 · React Router v6 · Axios · CSS
+
+---
 ## What can you do with Essentia?
 
 **As a visitor (no account needed)**
@@ -79,7 +87,9 @@ The interface is inspired by the aesthetic of luxury perfume houses — dark bac
 
 Essentia started as a **university internship project** built over roughly 2 months between April and May 2025. The goal was to put into practice real-world backend development: designing a proper data model, building a REST API with Java and Spring Boot, handling authentication, and containerising everything with Docker.
 
-In June 2026, the project was picked up again and polished over 3 days with the help of **[Claude Code](https://claude.ai/claude-code)** (Anthropic) — fixing bugs, improving consistency across the admin panel, building out missing features, and generally cleaning things up.
+In June 2026, the project was revisited and extended — fixing bugs,
+completing missing features, and improving overall consistency.
+Part of the work was done using AI-assisted development workflows.
 
 The frontend was designed and built entirely by Claude, based on the stylistic direction provided by the project author.
 
